@@ -1,0 +1,2 @@
+line-bot-sdk
+flask==0.12.2
