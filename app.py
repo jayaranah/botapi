@@ -137,7 +137,7 @@ def handle_text_message(event):
                 alt_text='Buttons alt text', template=buttons_template)
             line_bot_api.reply_message(event.reply_token, template_message)
         # carousel
-        elif text == 'carousel':
+        elif text == '#carousel':
             carousel_template = CarouselTemplate(columns=[
                 CarouselColumn(text='hoge1', title='fuga1', actions=[
                     URITemplateAction(
