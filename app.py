@@ -144,14 +144,14 @@ def handle_text_message(event):
         elif text == '#help':
             line_bot_api.reply_message(
                 event.reply_token, TextSendMessage(text="""list perintah :
-                                                        buttons, bye acchan, carousel, confirm, help, info
+                                                        buttons, bye acchan, carousel, confirm, help, info, jurus
                                                         Gunakan '#' di awal perintah
                                                         contoh: #profile"""))
         # jurus
         elif text == '#jurus':
             f = open('nagakacang.txt', 'r')
             line_bot_api.reply_message(
-                event.reply_token, TextSendMessage(text=f.read()))
+                event.reply_token, TextSendMessage(text=str(f.read())))
             f.close()
         # need help?
         else:
