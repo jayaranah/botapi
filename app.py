@@ -139,16 +139,16 @@ def handle_text_message(event):
         # carousel
         elif text == '#carousel':
             carousel_template = CarouselTemplate(columns=[
-                CarouselColumn(text='hoge1', title='fuga1', actions=[
+                CarouselColumn(text='meh', title='huehue', actions=[
                     URITemplateAction(
-                        label='Go to line.me', uri='https://line.me'),
+                        label='Jangan tekan', uri='https://ikraduyae.blogspot.co.id'),
                     PostbackTemplateAction(label='ping', data='ping')
                 ]),
-                CarouselColumn(text='hoge2', title='fuga2', actions=[
+                CarouselColumn(text='loveyou', title='ckckc', actions=[
                     PostbackTemplateAction(
                         label='ping with text', data='ping',
                         text='ping'),
-                    MessageTemplateAction(label='Translate Rice', text='米')
+                    MessageTemplateAction(label='Transliterasikan Rice', text='米')
                 ]),
             ])
             template_message = TemplateSendMessage(
