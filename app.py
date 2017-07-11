@@ -151,7 +151,8 @@ def handle_text_message(event):
         elif text == '#jurus':
             f = open('nagakacang.txt', 'r')
             line_bot_api.reply_message(
-                event.reply_token, TextSendMessage(text='huehue'))
+                event.reply_token, [TextSendMessage(text='Jurus Naga Kacang!!'),
+                                    TextSendMessage(text=str(f.read()))])
             f.close()
         # need help?
         else:
