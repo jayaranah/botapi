@@ -121,11 +121,12 @@ def handle_text_message(event):
             template_message = TemplateSendMessage(
                 alt_text='Confirm alt text', template=confirm_template)
             line_bot_api.reply_message(event.reply_token, template_message)
+        # buttons
         elif text == '#buttons':
             buttons_template = ButtonsTemplate(
                 title='Dipilih-dipilih', text='Hello, silahkan dipilih', actions=[
                     URITemplateAction(
-                        label='Jangan tekan', uri='https://ikraduyae.blogspot.com'),
+                        label='Jangan tekan', uri='https://ikraduyae.blogspot.co.id'),
                     PostbackTemplateAction(label='ping', data='ping'),
                     PostbackTemplateAction(
                         label='ping with text', data='ping',
@@ -139,15 +140,15 @@ def handle_text_message(event):
         elif text == '#carousel':
             carousel_template = CarouselTemplate(columns=[
                 CarouselColumn(text='huehue', title='hwaaaa', actions=[
-                    URITemplateAction(
+                    """URITemplateAction(
                         label='Jangan tekan', uri='https://ikraduyae.blogspot.co.id'),
-                    PostbackTemplateAction(label='ping', data='ping')
+                    PostbackTemplateAction(label='ping', data='ping')"""
                 ]),
                 CarouselColumn(text='HOHOHO', title='MUUUAAH', actions=[
-                    PostbackTemplateAction(
+                    """PostbackTemplateAction(
                         label='ping with text', data='ping',
                         text='ping'),
-                    MessageTemplateAction(label="Transliterasikan 'Nasi'", text='米')
+                    MessageTemplateAction(label="Transliterasikan Nasi", text='米')"""
                 ]),
             ])
             template_message = TemplateSendMessage(
