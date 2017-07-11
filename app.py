@@ -136,24 +136,6 @@ def handle_text_message(event):
             template_message = TemplateSendMessage(
                 alt_text='Buttons alt text', template=buttons_template)
             line_bot_api.reply_message(event.reply_token, template_message)
-        # carousel
-        elif text == '#carousel':
-            carousel_template = CarouselTemplate(columns=[
-                CarouselColumn(text='meh', title='huehue', actions=[
-                    URITemplateAction(
-                        label='Jangan tekan', uri='https://line.me'),
-                    PostbackTemplateAction(label='ping', data='ping')
-                ]),
-                CarouselColumn(text='loveyou', title='ckckc', actions=[
-                    PostbackTemplateAction(
-                        label='ping with text', data='ping',
-                        text='ping'),
-                    MessageTemplateAction(label='Transliterasikan Rice', text='米')
-                ]),
-            ])
-            template_message = TemplateSendMessage(
-                alt_text='Buttons alt text', template=carousel_template)
-            line_bot_api.reply_message(event.reply_token, template_message)
         # info
         elif text == '#info':
             line_bot_api.reply_message(
