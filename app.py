@@ -140,7 +140,7 @@ def handle_text_message(event):
             carousel_template = CarouselTemplate(columns=[
                 CarouselColumn(text='huehue', title='hwaaaa', actions=[
                     URITemplateAction(
-                        label='Jangan tekan', uri='https://ikraduyae.blogspot.com'),
+                        label='Jangan tekan', uri='https://ikraduyae.blogspot.co.id'),
                     PostbackTemplateAction(label='ping', data='ping')
                 ]),
                 CarouselColumn(text='HOHOHO', title='MUUUAAH', actions=[
