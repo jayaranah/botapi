@@ -1,14 +1,7 @@
-# Flask KitchenSink
+# akatsuki-chan-line-bot
 
-Sample bot using [Flask](http://flask.pocoo.org/)
+Line Messenger bot created by Kiraduya
 
-## Getting started
+## Add akatsuki-chan as a friend on line
+<a href="https://line.me/R/ti/p/%40vtx4064i"><img height="36" border="0" alt="Tambah Teman" src="https://scdn.line-apps.com/n/line_add_friends/btn/en.png"></a>
 
-```
-$ export LINE_CHANNEL_SECRET=YOUR_LINE_CHANNEL_SECRET
-$ export LINE_CHANNEL_ACCESS_TOKEN=YOUR_LINE_CHANNEL_ACCESS_TOKEN
-
-$ pip install -r requirements.txt
-
-$ python app.py
-```
