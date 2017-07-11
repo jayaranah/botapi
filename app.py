@@ -137,18 +137,18 @@ def handle_text_message(event):
                 alt_text='Buttons alt text', template=buttons_template)
             line_bot_api.reply_message(event.reply_token, template_message)
         # carousel
-        elif text == '#carousel':
+        elif text == 'carousel':
             carousel_template = CarouselTemplate(columns=[
-                CarouselColumn(text='huehue', title='hwaaaa', actions=[
-                    """URITemplateAction(
-                        label='Jangan tekan', uri='https://ikraduyae.blogspot.co.id'),
-                    PostbackTemplateAction(label='ping', data='ping')"""
+                CarouselColumn(text='hoge1', title='fuga1', actions=[
+                    URITemplateAction(
+                        label='Go to line.me', uri='https://line.me'),
+                    PostbackTemplateAction(label='ping', data='ping')
                 ]),
-                CarouselColumn(text='HOHOHO', title='MUUUAAH', actions=[
-                    """PostbackTemplateAction(
+                CarouselColumn(text='hoge2', title='fuga2', actions=[
+                    PostbackTemplateAction(
                         label='ping with text', data='ping',
                         text='ping'),
-                    MessageTemplateAction(label="Transliterasikan Nasi", text='米')"""
+                    MessageTemplateAction(label='Translate Rice', text='米')
                 ]),
             ])
             template_message = TemplateSendMessage(
