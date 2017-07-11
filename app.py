@@ -87,10 +87,10 @@ def handle_text_message(event):
                 line_bot_api.reply_message(
                     event.reply_token, [
                         TextSendMessage(
-                            text='Display name: ' + profile.display_name
+                            text='Hai ' + profile.display_name
                         ),
                         TextSendMessage(
-                            text='Status message: ' + profile.status_message
+                            text='Status message mu: ' + profile.status_message + ' kan?'
                         )
                     ]
                 )
@@ -134,7 +134,7 @@ def handle_text_message(event):
                     MessageTemplateAction(label="Transliterasi 'Nasi'", text='米')
                 ])
             template_message = TemplateSendMessage(
-                alt_text='Buttons alt text', template=buttons_template)
+                alt_text='Hello, silahkan dipilih', template=buttons_template)
             line_bot_api.reply_message(event.reply_token, template_message)
         # info
         elif text == '#info':
@@ -147,8 +147,8 @@ def handle_text_message(event):
                                                         buttons, bye acchan, carousel, confirm, help, info
                                                         Gunakan '#' di awal perintah
                                                         contoh: #profile"""))
-        # jurus naga kacang
-        elif text == '#jurus naga kacang':
+        # jurus
+        elif text == '#jurus':
             f = open('nagakacang.txt', 'r')
             line_bot_api.reply_message(
                 event.reply_token, TextSendMessage(text=f.read()))
