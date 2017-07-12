@@ -167,9 +167,8 @@ def handle_text_message(event):
     else:
         profile = line_bot_api.get_profile(event.source.user_id)
         if  profile.display_name == 'kiraduya':
-            fw = open('simpen.txt', 'w')
-            fw.write(text)
-            fw.close()
+            line_bot_api.reply_message(
+                event.reply_token, TextSendMessage(text=text))
 @handler.add(MessageEvent, message=LocationMessage)
 def handle_location_message(event):
     line_bot_api.reply_message(
