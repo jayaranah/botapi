@@ -104,9 +104,11 @@ def handle_text_message(event):
         elif text == '#bye':
             if isinstance(event.source, SourceGroup) or isinstance(event.source, SourceRoom):
                 image_message = ImageSendMessage(
-                    original_content_url=request.host_url + 'statics/akatsukileave.jpg',
-                    preview_image_url=request.host_url + 'statics/akatsukileave-prev.jpg')
-                line_bot_api.reply_message(event.reply_token, image_message)
+                    original_content_url='http://tinypic.com/m/k0kn49/4',
+                    preview_image_url='http://tinypic.com/m/k0kn4m/4')
+                text_message1 = TextMessage(text='"There are things you can only learn by accepting your weakness."')
+                text_message2 = TextMessage(text='Selamat tinggal ^_^')
+                line_bot_api.reply_message(event.reply_token, [image_message, text_message1, text_message2)
                 try:
                     line_bot_api.leave_group(event.source.group_id)
                 except:
