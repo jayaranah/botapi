@@ -163,7 +163,7 @@ def handle_text_message(event):
         # user id revel
         elif text == '#user_id':
             line_bot_api.reply_message(
-                event.reply_token, TextSendMessage(text=event.source_user.id)
+                event.reply_token, TextSendMessage(text=event.source_user.id))
         # need help?
         else:
             line_bot_api.reply_message(
