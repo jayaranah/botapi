@@ -90,7 +90,7 @@ def handle_text_message(event):
                             text='Hai ' + profile.display_name
                         ),
                         TextSendMessage(
-                            text='Status message mu: ' + profile.status_message + ' kan?'
+                            text='Status message mu: ' + profile.status_message
                         )
                     ]
                 )
@@ -100,14 +100,16 @@ def handle_text_message(event):
                     TextMessage(text="Aduuh.. perintah #profile harus digunakan melalui personal chat yaa"))
         # bye acchan
         elif text == '#bye acchan':
-            if isinstance(event.source, SourceGroup):
+            if isinstance(event.source, SourceGroup) or isinstance(event.source, SourceRoom):
                 line_bot_api.reply_message(
-                    event.reply_token, TextMessage(text='Leaving group'))
-                line_bot_api.leave_group(event.source.group_id)
-            elif isinstance(event.source, SourceRoom):
-                line_bot_api.reply_message(
-                    event.reply_token, TextMessage(text='Leaving multichat'))
-                line_bot_api.leave_room(event.source.room_id)
+                    event.reply_token,[
+                        TextSendMessage(text='Ada hal yang dapat kau pelajari dengan menerima kelemahanmu'),
+                        TextSendMessage(text='Selamat tinggal ^-^')
+                        ])
+                try:
+                    line_bot_api.leave_group(event.source.group_id)
+                except:
+                    line_bot_api.leave_room(event.source.room_id)   
             else:
                 line_bot_api.reply_message(
                     event.reply_token,
@@ -144,15 +146,23 @@ def handle_text_message(event):
         elif text == '#help':
             line_bot_api.reply_message(
                 event.reply_token, TextSendMessage(text="""list perintah :
-                                                        buttons, bye acchan, carousel, confirm, help, info
+                                                        buttons, bye acchan, carousel, confirm, help, info, naga kacang, panggil
                                                         Gunakan '#' di awal perintah
                                                         contoh: #profile"""))
-        # jurus
-        elif text == '#jurus':
+        # panggil
+        elif text == '#panggil':
+            line_bot_api.reply_message(
+                event.reply_token, TextSendMessage(text="It's curry night!"))
+        # jurus naga kacang
+        elif text == '#naga kacang':
             f = open('nagakacang.txt', 'r')
             line_bot_api.reply_message(
                 event.reply_token, TextSendMessage(text=f.read()))
             f.close()
+        # coba mention
+        elif text == '#mention':
+            line_bot_api.reply_message(
+                event.reply_token, TextSendMessage(text='@Farisan Kusniadi'))
         # need help?
         else:
             line_bot_api.reply_message(
@@ -218,12 +228,14 @@ def handle_follow(event):
 def handle_unfollow():
     app.logger.info("Got Unfollow event")
 
-
+# handle join event
 @handler.add(JoinEvent)
 def handle_join(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text='Join ' + event.source.type))
+    if event.source.type == 'group':
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='Watashinonamaeha akatsukidesu')
+            )
 
 
 @handler.add(LeaveEvent)
