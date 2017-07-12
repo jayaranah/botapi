@@ -104,7 +104,7 @@ def handle_text_message(event):
         elif text == '#bye':
             if isinstance(event.source, SourceGroup) or isinstance(event.source, SourceRoom):
                 image_message = ImageSendMessage(
-                    original_content_url='https://s-media-cache-ak0.pinimg.com/736x/8e/0e/f1/8e0ef15e0ba7a598dbe69658c7b38379--nerd-art-cosplay-anime.jpg'
+                    original_content_url='https://s-media-cache-ak0.pinimg.com/736x/8e/0e/f1/8e0ef15e0ba7a598dbe69658c7b38379--nerd-art-cosplay-anime.jpg',
                     preview_image_url=None)
                 line_bot_api.reply_message(event.reply_token, image_message)
                 try:
