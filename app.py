@@ -146,7 +146,7 @@ def handle_text_message(event):
         elif text == '#help':
             line_bot_api.reply_message(
                 event.reply_token, TextSendMessage(text="""list perintah :
-                                                        buttons, bye acchan, carousel, confirm, help, info, naga kacang, panggil
+                                                        buttons, bye acchan, confirm, help, info, naga kacang, panggil
                                                         Gunakan '#' di awal perintah
                                                         contoh: #profile"""))
         # panggil
@@ -160,15 +160,14 @@ def handle_text_message(event):
                 event.reply_token, [TextSendMessage(text='Jurus Naga Kacang!!'),
                                     TextSendMessage(text=str(f.read()))])
             f.close()
+        # user id revel
+        elif text == '#user_id':
+            line_bot_api.reply_message(
+                event.reply_token, TextSendMessage(text=event.source_user.id)
         # need help?
         else:
             line_bot_api.reply_message(
                 event.reply_token, TextSendMessage(text="butuh bantuan? ketik '#help'"))
-    else:
-        profile = line_bot_api.get_profile(event.source.user_id)
-        if  profile.display_name == 'kiraduya':
-            line_bot_api.reply_message(
-                event.reply_token, TextSendMessage(text=text))
 @handler.add(MessageEvent, message=LocationMessage)
 def handle_location_message(event):
     line_bot_api.reply_message(
