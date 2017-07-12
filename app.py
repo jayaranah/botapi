@@ -36,7 +36,7 @@ from linebot.models import (
     CarouselTemplate, CarouselColumn, PostbackEvent,
     StickerMessage, StickerSendMessage, LocationMessage, LocationSendMessage,
     ImageMessage, VideoMessage, AudioMessage,
-    ImageSendMessage, ImageSendMessage, VideoSendMessage, AudioSendMessage
+    ImageSendMessage, ImageSendMessage, VideoSendMessage, AudioSendMessage,
     UnfollowEvent, FollowEvent, JoinEvent, LeaveEvent, BeaconEvent
 )
 
