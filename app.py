@@ -79,6 +79,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
     text = event.message.text
+    master_id = str(os.environ.get('MASTER_ID'))
     if text[0] == '#':
         # profile
         if text == '#profile':
@@ -155,7 +156,7 @@ def handle_text_message(event):
                 event.reply_token, TextSendMessage(text="It's curry night!"))
         # jurus naga kacang
         elif text == '#naga kacang':
-            f = open('nagakacang.txt', 'r')
+            f = open('static\nagakacang.txt', 'r')
             line_bot_api.reply_message(
                 event.reply_token, [TextSendMessage(text='Jurus Naga Kacang!!'),
                                     TextSendMessage(text=str(f.read()))])
@@ -168,6 +169,8 @@ def handle_text_message(event):
         else:
             line_bot_api.reply_message(
                 event.reply_token, TextSendMessage(text="butuh bantuan? ketik '#help'"))
+
+"""            
 @handler.add(MessageEvent, message=LocationMessage)
 def handle_location_message(event):
     line_bot_api.reply_message(
@@ -177,8 +180,9 @@ def handle_location_message(event):
             latitude=event.message.latitude, longitude=event.message.longitude
         )
     )
+"""
 
-
+"""
 @handler.add(MessageEvent, message=StickerMessage)
 def handle_sticker_message(event):
     line_bot_api.reply_message(
@@ -187,8 +191,8 @@ def handle_sticker_message(event):
             package_id=event.message.package_id,
             sticker_id=event.message.sticker_id)
     )
-
-
+"""
+"""
 # Other Message Type
 @handler.add(MessageEvent, message=(ImageMessage, VideoMessage, AudioMessage))
 def handle_content_message(event):
@@ -216,17 +220,7 @@ def handle_content_message(event):
             TextSendMessage(text='File saved.'),
             TextSendMessage(text=request.host_url + os.path.join('static', 'tmp', dist_name))
         ])
-
-
-@handler.add(FollowEvent)
-def handle_follow(event):
-    line_bot_api.reply_message(
-        event.reply_token, TextSendMessage(text='Got follow event'))
-
-
-@handler.add(UnfollowEvent)
-def handle_unfollow():
-    app.logger.info("Got Unfollow event")
+"""
 
 # handle join event
 @handler.add(JoinEvent)
