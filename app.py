@@ -106,8 +106,8 @@ def handle_text_message(event):
                 image_message = ImageSendMessage(
                     original_content_url='http://oi66.tinypic.com/2ppwy9e.jpg',
                     preview_image_url='http://oi68.tinypic.com/j11vy9.jpg')
-                text_message1 = TextMessage(text='"There are things you can only learn by accepting your weakness."')
-                text_message2 = TextMessage(text='Selamat tinggal ^_^')
+                #text_message1 = TextMessage(text='"There are things you can only learn by accepting your weakness."')
+                #text_message2 = TextMessage(text='Selamat tinggal ^_^')
                 line_bot_api.reply_message(event.reply_token, image_message)
                 try:
                     line_bot_api.leave_group(event.source.group_id)
