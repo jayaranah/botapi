@@ -104,8 +104,7 @@ def handle_text_message(event):
             if isinstance(event.source, SourceGroup) or isinstance(event.source, SourceRoom):
                 line_bot_api.reply_message(
                     event.reply_token,[
-                        #ImageSendMessage(original_content_url=request.host_url+),
-                        TextSendMessage(text=request.host_url),
+                        ImageSendMessage(original_content_url=request.host_url + 'statics/akatsukileave.png'),
                         TextSendMessage(text='"There are things you can only learn by accepting your weakness."'),
                         TextSendMessage(text='Selamat tinggal ^-^')
                         ])
