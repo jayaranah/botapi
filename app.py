@@ -105,7 +105,7 @@ def handle_text_message(event):
             if isinstance(event.source, SourceGroup) or isinstance(event.source, SourceRoom):
                 line_bot_api.reply_message(
                     event.reply_token,[
-                        ImageSendMessage(original_content_url="http://akatsuki-chan.herokuapp.com/static/tmp/jpg-8wmg98_3.jpg"),
+                        ImageSendMessage(original_content_url="https://s-media-cache-ak0.pinimg.com/736x/8e/0e/f1/8e0ef15e0ba7a598dbe69658c7b38379--nerd-art-cosplay-anime.jpg"),
                         TextSendMessage(text='"There are things you can only learn by accepting your weakness."'),
                         TextSendMessage(text='Selamat tinggal ^-^')
                         ])
