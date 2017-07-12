@@ -156,7 +156,7 @@ def handle_text_message(event):
                 event.reply_token, TextSendMessage(text="It's curry night!"))
         # jurus naga kacang
         elif text == '#naga kacang':
-            f = open('static\nagakacang.txt', 'r')
+            f = open('static/nagakacang.txt', 'r')
             line_bot_api.reply_message(
                 event.reply_token, [TextSendMessage(text='Jurus Naga Kacang!!'),
                                     TextSendMessage(text=str(f.read()))])
