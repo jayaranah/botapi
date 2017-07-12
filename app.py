@@ -106,9 +106,9 @@ def handle_text_message(event):
                 image_message = ImageSendMessage(
                     original_content_url='https://image.ibb.co/dz0HXv/akatsukileave.jpg',
                     preview_image_url='https://image.ibb.co/bYMPCv/akatsukileave_prev.jpg')
-                #text_message1 = TextMessage(text='"There are things you can only learn by accepting your weakness."')
-                #text_message2 = TextMessage(text='Selamat tinggal ^_^')
-                line_bot_api.reply_message(event.reply_token, image_message)
+                text_message1 = TextMessage(text='"There are things you can only learn by accepting your weakness."')
+                text_message2 = TextMessage(text='Selamat tinggal ^_^')
+                line_bot_api.reply_message(event.reply_token, [image_message, text_message1, text_message2])
                 try:
                     line_bot_api.leave_group(event.source.group_id)
                 except:
