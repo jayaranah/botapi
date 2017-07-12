@@ -107,7 +107,7 @@ def handle_text_message(event):
                     event.reply_token,[
                         ImageSendMessage("https://s-media-cache-ak0.pinimg.com/736x/8e/0e/f1/8e0ef15e0ba7a598dbe69658c7b38379--nerd-art-cosplay-anime.jpg"),
                         TextSendMessage(text='"There are things you can only learn by accepting your weakness."'),
-                        TextSendMessage(text='Selamat tinggal ^-^')
+                        #TextSendMessage(text='Selamat tinggal ^-^')
                         ])
                 try:
                     line_bot_api.leave_group(event.source.group_id)
