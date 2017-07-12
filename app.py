@@ -103,7 +103,7 @@ def handle_text_message(event):
             if isinstance(event.source, SourceGroup) or isinstance(event.source, SourceRoom):
                 line_bot_api.reply_message(
                     event.reply_token,[
-                        TextSendMessage(text='Ada hal yang dapat kau pelajari dengan menerima kelemahanmu'),
+                        TextSendMessage(text='"There are things you can only learn by accepting your weakness."'),
                         TextSendMessage(text='Selamat tinggal ^-^')
                         ])
                 try:
@@ -160,15 +160,16 @@ def handle_text_message(event):
                 event.reply_token, [TextSendMessage(text='Jurus Naga Kacang!!'),
                                     TextSendMessage(text=str(f.read()))])
             f.close()
-        # coba mention
-        elif text == '#mention':
-            line_bot_api.reply_message(
-                event.reply_token, TextSendMessage(text='@Farisan Kusniadi'))
         # need help?
         else:
             line_bot_api.reply_message(
                 event.reply_token, TextSendMessage(text="butuh bantuan? ketik '#help'"))
-    
+    else:
+        profile = line_bot_api.get_profile(event.source.user_id)
+        if  profile.display_name == 'kiraduya':
+            fw = open('simpen.txt', 'w')
+            fw.write(text)
+            fw.close()
 @handler.add(MessageEvent, message=LocationMessage)
 def handle_location_message(event):
     line_bot_api.reply_message(
