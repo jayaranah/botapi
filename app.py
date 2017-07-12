@@ -43,6 +43,7 @@ app = Flask(__name__)
 
 channel_access_token = str(os.environ.get('CHANNEL_ACCESS_TOKEN'))
 channel_secret = str(os.environ.get('CHANNEL_SECRET'))
+master_id = str(os.environ.get('MASTER_ID'))
 line_bot_api = LineBotApi(channel_access_token)
 handler = WebhookHandler(channel_secret)
 
@@ -79,7 +80,6 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
     text = event.message.text
-    master_id = str(os.environ.get('MASTER_ID'))
     if text[0] == '#':
         # profile
         if text == '#profile':
@@ -98,12 +98,14 @@ def handle_text_message(event):
             else:
                 line_bot_api.reply_message(
                     event.reply_token,
-                    TextMessage(text="Aduuh.. perintah #profile harus digunakan melalui personal chat yaa"))
-        # bye acchan
-        elif text == '#bye acchan':
+                    TextSendMessage(text="Aduuh.. perintah #profile harus digunakan melalui personal chat yaa"))
+        # bye
+        elif text == '#bye':
             if isinstance(event.source, SourceGroup) or isinstance(event.source, SourceRoom):
                 line_bot_api.reply_message(
                     event.reply_token,[
+                        #ImageSendMessage(original_content_url=request.host_url+),
+                        TextSendMessage(text=request.host_url),
                         TextSendMessage(text='"There are things you can only learn by accepting your weakness."'),
                         TextSendMessage(text='Selamat tinggal ^-^')
                         ])
@@ -117,7 +119,7 @@ def handle_text_message(event):
                     TextMessage(text="Mana bisa keluar dari personal chat qaqa ^-^"))
         # confirm
         elif text == '#confirm':
-            confirm_template = ConfirmTemplate(text='Lakukan ;->?', actions=[
+            confirm_template = ConfirmTemplate(text='Do it ;-)?', actions=[
                 MessageTemplateAction(label='Just Do It!', text='Just Do It!'),
                 MessageTemplateAction(label='wat', text='wat'),
             ])
@@ -147,7 +149,7 @@ def handle_text_message(event):
         elif text == '#help':
             line_bot_api.reply_message(
                 event.reply_token, TextSendMessage(text="""list perintah :
-                                                        buttons, bye acchan, confirm, help, info, naga kacang, panggil
+                                                        buttons, bye, confirm, help, info, naga kacang, panggil
                                                         Gunakan '#' di awal perintah
                                                         contoh: #profile"""))
         # panggil
@@ -156,15 +158,11 @@ def handle_text_message(event):
                 event.reply_token, TextSendMessage(text="It's curry night!"))
         # jurus naga kacang
         elif text == '#naga kacang':
-            f = open('static/nagakacang.txt', 'r')
+            f = open('statics/nagakacang.txt', 'r')
             line_bot_api.reply_message(
                 event.reply_token, [TextSendMessage(text='Jurus Naga Kacang!!'),
                                     TextSendMessage(text=str(f.read()))])
             f.close()
-        # user id revel
-        elif text == '#user_id':
-            line_bot_api.reply_message(
-                event.reply_token, TextSendMessage(text=event.source.user_id))
         # need help?
         else:
             line_bot_api.reply_message(
