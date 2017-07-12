@@ -103,11 +103,10 @@ def handle_text_message(event):
         # bye
         elif text == '#bye':
             if isinstance(event.source, SourceGroup) or isinstance(event.source, SourceRoom):
-                line_bot_api.reply_message(
-                    event.reply_token,
-                        ImageSendMessage(original_content_url="https://s-media-cache-ak0.pinimg.com/736x/8e/0e/f1/8e0ef15e0ba7a598dbe69658c7b38379--nerd-art-cosplay-anime.jpg",     
-                                         preview_image_url="http://fsb.zedge.net/scale.php?img=My80LzkvNS8xLTE3NzAyOTktMzQ5NTAzOS5qcGc&ctype=1&v=4&q=71&xs=128&ys=128&sig=bd6818f71f174a02b3abf1a18a41dd28a94e8bd8")
-                        )
+                image_message = ImageSendMessage(
+                    original_content_url='https://s-media-cache-ak0.pinimg.com/736x/8e/0e/f1/8e0ef15e0ba7a598dbe69658c7b38379--nerd-art-cosplay-anime.jpg',
+                    preview_image_url='https://a.wattpad.com/useravatar/tori_tatsu.128.745644.jpg')
+                line_bot_api.reply_message(event.reply_token, image_message)
                 try:
                     line_bot_api.leave_group(event.source.group_id)
                 except:
