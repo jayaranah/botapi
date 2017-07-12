@@ -104,8 +104,8 @@ def handle_text_message(event):
         elif text == '#bye':
             if isinstance(event.source, SourceGroup) or isinstance(event.source, SourceRoom):
                 image_message = ImageSendMessage(
-                    original_content_url='http://tinypic.com/m/k0kn49/4',
-                    preview_image_url='http://tinypic.com/m/k0kn4m/4')
+                    original_content_url='http://oi66.tinypic.com/2ppwy9e.jpg',
+                    preview_image_url='http://oi68.tinypic.com/j11vy9.jpg')
                 text_message1 = TextMessage(text='"There are things you can only learn by accepting your weakness."')
                 text_message2 = TextMessage(text='Selamat tinggal ^_^')
                 line_bot_api.reply_message(event.reply_token, [image_message, text_message1, text_message2])
