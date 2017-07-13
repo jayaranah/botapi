@@ -84,8 +84,8 @@ def callback():
 def handle_text_message(event):
     text = event.message.text
     daftar_jurus = {'naga kacang':'nagakacang.txt'}
-    daftar_cmd = ['bye', 'help', 'info', 'jurus', 'meme', 'ougi', 'panggil', 'profil']
-    daftar_meme = ['gagal ambis']
+    daftar_cmd = ['bye', 'help', 'info', 'jurus', 'tag', 'tags', 'ougi', 'panggil', 'profil']
+    daftar_tag = ['gagal ambis']
     img_url = {'bye':
                    ['https://image.ibb.co/ibvkKa/akatsukileave.jpg','https://image.ibb.co/meYGQF/akatsukileave_prev.jpg'],
                'gagal ambis':
@@ -147,17 +147,21 @@ def handle_text_message(event):
                     event.reply_token, TextSendMessage(text='Jurus apa qaqa??'))
             else:
                 line_bot_api.reply_message(
-                    event.reply_token, TextSendMessage(text='Mana ada jurus begitu..'))
-        # meme
-        elif cmd.group(1) == 'meme':
-            if cmd.group(2) in daftar_meme:
+                    event.reply_token, TextSendMessage(text="Mana ada jurus begitu.. untuk melihat list jurus ketik '#ougi'"))
+        # tag
+        elif cmd.group(1) == 'tag':
+            if cmd.group(2) in daftar_tag:
                 image_message = ImageSendMessage(
                     original_content_url=img_url[cmd.group(2)][0],
                     preview_image_url=img_url[cmd.group(2)][1])
                 line_bot_api.reply_message(event.reply_token, image_message)
             else:
                 line_bot_api.reply_message(
-                    event.reply_token, TextSendMessage(text='Berikut list meme : '+', '.join(daftar_meme)))
+                    event.reply_token, TextSendMessage(text="Untuk melihat list tag ketik '#tags'"))
+        # tags
+        elif cmd.group() == '#tags':
+            line_bot_api.reply_message(
+                    event.reply_token, TextSendMessage(text='Berikut list tag : '+', '.join(daftar_tag)))
         # ougi
         elif cmd.group() == '#ougi':
             line_bot_api.reply_message(
@@ -184,7 +188,18 @@ def handle_text_message(event):
         else:
             line_bot_api.reply_message(
                 event.reply_token, TextSendMessage(text="butuh bantuan? ketik '#help'"))
-        
+    # shortcut tag
+    elif (text[0] == '/') and (text[len(text)-1] == '/'):
+        judul_tag = search(r'\/(.*)',text).group(1)[:-1]
+        if judul_tag in daftar_tag:
+            image_message = ImageSendMessage(
+                    original_content_url=img_url[cmd.group(2)][0],
+                    preview_image_url=img_url[cmd.group(2)][1])
+            line_bot_api.reply_message(event.reply_token, image_message)
+        else:
+            line_bot_api.reply_message(
+                    event.reply_token, TextSendMessage(text="Untuk melihat list tag ketik '#tags'"))
+            
 
 # handle join event
 @handler.add(JoinEvent)
