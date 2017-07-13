@@ -18,6 +18,7 @@ import errno
 import os
 import sys
 import tempfile
+from re import search
 from argparse import ArgumentParser
 
 from flask import Flask, request, abort
@@ -33,7 +34,7 @@ from linebot.models import (
     SourceUser, SourceGroup, SourceRoom,
     TemplateSendMessage, ConfirmTemplate, MessageTemplateAction,
     ButtonsTemplate, URITemplateAction, PostbackTemplateAction,
-    CarouselTemplate, CarouselColumn, PostbackEvent,
+    PostbackEvent,
     StickerMessage, StickerSendMessage, LocationMessage, LocationSendMessage,
     ImageMessage, VideoMessage, AudioMessage,
     ImageSendMessage, ImageSendMessage, VideoSendMessage, AudioSendMessage,
@@ -48,7 +49,7 @@ master_id = str(os.environ.get('MASTER_ID'))
 line_bot_api = LineBotApi(channel_access_token)
 handler = WebhookHandler(channel_secret)
 
-static_tmp_path = os.path.join(os.path.dirname(__file__), 'static', 'tmp')
+#static_tmp_path = os.path.join(os.path.dirname(__file__), 'static', 'tmp')#
 
 # function for create tmp dir for download content
 def make_static_tmp_dir():
@@ -82,8 +83,9 @@ def callback():
 def handle_text_message(event):
     text = event.message.text
     if text[0] == '#':
+        cmd = search(r'\#(\w*)\s*(.*)', text)
         # profile
-        if text == '#profile':
+        if cmd.group() == '#profile'):
             if isinstance(event.source, SourceUser):
                 profile = line_bot_api.get_profile(event.source.user_id)
                 line_bot_api.reply_message(
@@ -101,7 +103,7 @@ def handle_text_message(event):
                     event.reply_token,
                     TextSendMessage(text="Aduuh.. perintah #profile harus digunakan melalui personal chat yaa"))
         # bye
-        elif text == '#bye':
+        elif cmd.group() == '#bye':
             if isinstance(event.source, SourceGroup) or isinstance(event.source, SourceRoom):
                 image_message = ImageSendMessage(
                     original_content_url='https://image.ibb.co/dz0HXv/akatsukileave.jpg',
@@ -117,108 +119,38 @@ def handle_text_message(event):
                 line_bot_api.reply_message(
                     event.reply_token,
                     TextMessage(text="Mana bisa keluar dari personal chat qaqa ^-^"))
-        # confirm
-        elif text == '#confirm':
-            confirm_template = ConfirmTemplate(text='Do it ;-)?', actions=[
-                MessageTemplateAction(label='Just Do It!', text='Just Do It!'),
-                MessageTemplateAction(label='wat', text='wat'),
-            ])
-            template_message = TemplateSendMessage(
-                alt_text='Confirm alt text', template=confirm_template)
-            line_bot_api.reply_message(event.reply_token, template_message)
-        # buttons
-        elif text == '#buttons':
-            buttons_template = ButtonsTemplate(
-                title='Dipilih-dipilih', text='Hello, silahkan dipilih', actions=[
-                    URITemplateAction(
-                        label='Jangan tekan', uri='https://ikraduyae.blogspot.co.id'),
-                    PostbackTemplateAction(label='ping', data='ping'),
-                    PostbackTemplateAction(
-                        label='ping with text', data='ping',
-                        text='ping'),
-                    MessageTemplateAction(label="Transliterasi 'Nasi'", text='米')
-                ])
-            template_message = TemplateSendMessage(
-                alt_text='Hello, silahkan dipilih', template=buttons_template)
-            line_bot_api.reply_message(event.reply_token, template_message)
         # info
-        elif text == '#info':
+        elif cmd.group() == '#info':
             line_bot_api.reply_message(
                 event.reply_token, TextSendMessage(text='Dibuat sebagai project pembelajaran oleh: Ikraduya Edian(line:ikraduya)'))
         # help
-        elif text == '#help':
+        elif cmd.group() == '#help':
             line_bot_api.reply_message(
                 event.reply_token, TextSendMessage(text="""list perintah :
                                                         buttons, bye, confirm, help, info, naga kacang, panggil
                                                         Gunakan '#' di awal perintah
                                                         contoh: #profile"""))
         # panggil
-        elif text == '#panggil':
+        elif cmd.group() == '#panggil':
             line_bot_api.reply_message(
                 event.reply_token, TextSendMessage(text="It's curry night!"))
-        # jurus naga kacang
-        elif text == '#naga kacang':
-            f = open('statics/nagakacang.txt', 'r')
-            line_bot_api.reply_message(
-                event.reply_token, [TextSendMessage(text='Jurus Naga Kacang!!'),
-                                    TextSendMessage(text=str(f.read()))])
-            f.close()
+        # jurus
+        elif cmd.group(1) == 'jurus':
+            daftar_jurus = {'naga kacang':'nagakacang.txt'}
+            if cmd.group(2) in daftar_jurus:
+                f = open('statics/' + daftar_jurus[cmd.group(2)], 'r')
+                line_bot_api.reply_message(
+                    event.reply_token, [TextSendMessage(text=('Jurus '+cmd.group(2).upper() + '!')),
+                                        TextSendMessage(text=str(f.read()))])
+                f.close()
+            else:
+                line_bot_api.reply_message(
+                    event.reply_token, TextSendMessage(text='Mana ada jurus begitu..'))
         # need help?
         else:
             line_bot_api.reply_message(
                 event.reply_token, TextSendMessage(text="butuh bantuan? ketik '#help'"))
-
-"""            
-@handler.add(MessageEvent, message=LocationMessage)
-def handle_location_message(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        LocationSendMessage(
-            title=event.message.title, address=event.message.address,
-            latitude=event.message.latitude, longitude=event.message.longitude
-        )
-    )
-"""
-
-"""
-@handler.add(MessageEvent, message=StickerMessage)
-def handle_sticker_message(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        StickerSendMessage(
-            package_id=event.message.package_id,
-            sticker_id=event.message.sticker_id)
-    )
-"""
-"""
-# Other Message Type
-@handler.add(MessageEvent, message=(ImageMessage, VideoMessage, AudioMessage))
-def handle_content_message(event):
-    if isinstance(event.message, ImageMessage):
-        ext = 'jpg'
-    elif isinstance(event.message, VideoMessage):
-        ext = 'mp4'
-    elif isinstance(event.message, AudioMessage):
-        ext = 'm4a'
-    else:
-        return
-
-    message_content = line_bot_api.get_message_content(event.message.id)
-    with tempfile.NamedTemporaryFile(dir=static_tmp_path, prefix=ext + '-', delete=False) as tf:
-        for chunk in message_content.iter_content():
-            tf.write(chunk)
-        tempfile_path = tf.name
-
-    dist_path = tempfile_path + '.' + ext
-    dist_name = os.path.basename(dist_path)
-    os.rename(tempfile_path, dist_path)
-
-    line_bot_api.reply_message(
-        event.reply_token, [
-            TextSendMessage(text='File saved.'),
-            TextSendMessage(text=request.host_url + os.path.join('static', 'tmp', dist_name))
-        ])
-"""
+        
 
 # handle join event
 @handler.add(JoinEvent)
