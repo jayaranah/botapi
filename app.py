@@ -155,8 +155,8 @@ def handle_text_message(event):
             else:
                 line_bot_api.reply_message(
                     event.reply_token, TextSendMessage(text="Untuk melihat list tag ketik '#tags'"))
-        # tags
-        elif cmd.group() == '#tags':
+        # taglist
+        elif cmd.group() == '#taglist':
             line_bot_api.reply_message(
                     event.reply_token, TextSendMessage(text='Berikut list tag : '+', '.join(daftar_tag)))
         # so
