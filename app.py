@@ -18,6 +18,7 @@ import errno
 import os
 import sys
 import tempfile
+from var import *
 from re import search
 from argparse import ArgumentParser
 
@@ -86,7 +87,6 @@ def handle_text_message(event):
     
     if text[0] == '#':
         cmd = search(r'\#(\w*)\s*(.*)', text)
-        from var import *
         # bye
         if cmd.group() == '#bye':
             if isinstance(event.source, SourceGroup) or isinstance(event.source, SourceRoom):
