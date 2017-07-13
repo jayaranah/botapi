@@ -36,5 +36,3 @@ altia_url_tag = {'perhaps':['https://image.ibb.co/jB2YqF/perhaps.jpg','https://i
                  #'':['',''],
                  #'':['',''],
                  }
-img_url_tag_gab = img_url_tag.copy()
-img_url_tag_gab.update(altia_id)

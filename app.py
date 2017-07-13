@@ -52,6 +52,9 @@ altia_id = str(os.environ.get('ALTIA_ID'))
 line_bot_api = LineBotApi(channel_access_token)
 handler = WebhookHandler(channel_secret)
 
+img_url_tag_gab = img_url_tag.copy()
+img_url_tag_gab.update(altia_id)
+
 #static_tmp_path = os.path.join(os.path.dirname(__file__), 'static', 'tmp')#
 
 """
