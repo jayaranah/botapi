@@ -117,7 +117,7 @@ def handle_text_message(event):
                         event.reply_token, TextSendMessage(text=txt))
             except:
                 line_bot_api.reply_message(
-                    event.reply_token, TextSendMessage(text="Ga ada gombal buat mu..")
+                    event.reply_token, TextSendMessage(text="Ga ada gombal buat mu.."))
         # help
         elif cmd.group(1) == 'help':
             if cmd.group() == '#help':
