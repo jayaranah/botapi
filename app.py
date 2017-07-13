@@ -107,8 +107,9 @@ def handle_text_message(event):
         # gombal
         elif cmd.group() == '#gombal':
             profile = line_bot_api.get_profile(event.source.user_id)
+            eh = choice(['eh ','','sayang '])
             line_bot_api.reply_message(
-                    event.reply_token, TextSendMessage(text='eh '+profile.display_name+',\n'+choice(list_gombal)))
+                    event.reply_token, TextSendMessage(text=eh+profile.display_name+',\n'+choice(list_gombal)))
         # help
         elif cmd.group(1) == 'help':
             if cmd.group() == '#help':
