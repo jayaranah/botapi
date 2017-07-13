@@ -1,0 +1,3 @@
+﻿Penggunaan : #gombal
+Acchan mengucapkan kalimat gombal
+Contoh : #gombal
