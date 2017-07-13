@@ -91,8 +91,8 @@ def handle_text_message(event):
         if cmd.group() == '#bye':
             if isinstance(event.source, SourceGroup) or isinstance(event.source, SourceRoom):
                 image_message = ImageSendMessage(
-                    original_content_url=img_url[cmd.group(1)][0],
-                    preview_image_url=img_url[cmd.group(1)][1])
+                    original_content_url=img_url_tag[cmd.group(1)][0],
+                    preview_image_url=img_url_tag[cmd.group(1)][1])
                 text_message1 = TextMessage(text='"There are things you can only learn by accepting your weakness."')
                 text_message2 = TextMessage(text='Selamat tinggal ^_^')
                 line_bot_api.reply_message(event.reply_token, [image_message, text_message1, text_message2])
@@ -158,8 +158,8 @@ def handle_text_message(event):
         elif cmd.group(1) == 'tag':
             if cmd.group(2) in img_url_tag:
                 image_message = ImageSendMessage(
-                    original_content_url=img_url[cmd.group(2)][0],
-                    preview_image_url=img_url[cmd.group(2)][1])
+                    original_content_url=img_url_tag[cmd.group(2)][0],
+                    preview_image_url=img_url_tag[cmd.group(2)][1])
                 line_bot_api.reply_message(event.reply_token, image_message)
             else:
                 line_bot_api.reply_message(
@@ -210,8 +210,8 @@ def handle_text_message(event):
         judul_tag = search(r'\/(.*)',text).group(1)[:-1]
         if judul_tag in img_url_tag:
             image_message = ImageSendMessage(
-                    original_content_url=img_url[judul_tag][0],
-                    preview_image_url=img_url[judul_tag][1])
+                    original_content_url=img_url_tag[judul_tag][0],
+                    preview_image_url=img_url_tag[judul_tag][1])
             line_bot_api.reply_message(event.reply_token, image_message)
         else:
             line_bot_api.reply_message(
