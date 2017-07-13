@@ -87,8 +87,18 @@ def handle_text_message(event):
     text = event.message.text
     if text[0] == '#':
         cmd = search(r'\#(\w*)\s*(.*)', text)
+        #profile = line_bot_api.get_profile(event.source.user_id)
+        if (cmd.group(1) == 'su') and (event.source.user_id == master_id):
+            if cmd.group(2) == 'groupid':
+                line_bot_api.reply_message(event.reply_token, text=event.source.group_id)
+            elif cmd.group(2) == 'acchan':
+                line_bot_api.reply_message(event.reply_token, text='Ya Master?')
+            elif cmd.group(2) == 'thanks':
+                line_bot_api.reply_message(event.reply_token, text='Anytime Master')
+            else:
+                line_bot_api.reply_message(event.reply_token, text='Kenapa Master?')
         # bye
-        if cmd.group() == '#bye':
+        elif cmd.group() == '#bye':
             if isinstance(event.source, SourceGroup) or isinstance(event.source, SourceRoom):
                 image_message = ImageSendMessage(
                     original_content_url=img_url_tag[cmd.group(1)][0],
