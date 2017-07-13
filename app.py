@@ -111,9 +111,10 @@ def handle_text_message(event):
             plus = ''
             if eh == '':
                 plus = ' sayang'
+            txt = eh + profile.display_name+ plus +',\n'+choice(list_gombal)
             try:
                 line_bot_api.reply_message(
-                        event.reply_token, TextSendMessage(text=eh + profile.display_name+ plus +',\n'+choice(list_gombal)))
+                        event.reply_token, TextSendMessage(text=txt))
             except:
                 line_bot_api.reply_message(
                     event.reply_token, TextSendMessage(text="Ga ada gombal buat mu..")
