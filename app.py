@@ -94,7 +94,7 @@ def handle_text_message(event):
             if isinstance(event.source, SourceGroup) or isinstance(event.source, SourceRoom):
                 image_message = ImageSendMessage(
                     original_content_url=ori_ct_url[cmd.group(1)],
-                    preview_image_url='http://pa1.narvii.com/5736/d6c86544eb94818b66d36b8b6621d9f4c67f3437_128.gif')
+                    preview_image_url=prev_img_url[cmd.group(1)])
                 text_message1 = TextMessage(text='"There are things you can only learn by accepting your weakness."')
                 text_message2 = TextMessage(text='Selamat tinggal ^_^')
                 line_bot_api.reply_message(event.reply_token, [image_message, text_message1, text_message2])
