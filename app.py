@@ -84,12 +84,13 @@ def callback():
 def handle_text_message(event):
     text = event.message.text
     daftar_jurus = {'naga kacang':'nagakacang.txt'}
-    daftar_cmd = ['bye', 'help', 'info', 'jurus', 'ougi', 'panggil', 'profil']
+    daftar_cmd = ['bye', 'help', 'info', 'jurus', 'meme', 'ougi', 'panggil', 'profil']
+    dafter_meme = ['gagal ambis']
     img_url = {'bye':
                    ['https://image.ibb.co/ibvkKa/akatsukileave.jpg','https://image.ibb.co/meYGQF/akatsukileave_prev.jpg'],
                'gagal ambis':
                    ['https://image.ibb.co/hH2Msv/gagal_ngambis.jpg','https://image.ibb.co/mkb35F/gagal_ngambis_prev.jpg'],
-        
+            
                 }
     if text[0] == '#':
         cmd = search(r'\#(\w*)\s*(.*)', text)
@@ -147,6 +148,19 @@ def handle_text_message(event):
             else:
                 line_bot_api.reply_message(
                     event.reply_token, TextSendMessage(text='Mana ada jurus begitu..'))
+        # meme
+        elif cmd.group(1) == 'meme':
+            if cmd.group(2) in daftar_meme:
+                image_message = ImageSendMessage(
+                    original_content_url=img_url[cmd.group(2)][0],
+                    preview_image_url=img_url[cmd.group(2)][1])
+                line_bot_api.reply_message(event.reply_token, image_message)
+            elif cmd.group(2) == '':
+                line_bot_api.reply_message(
+                    event.reply_token, TextSendMessage(text='Haaa?'))
+            else:
+                line_bot_api.reply_message(
+                    event.reply_token, TextSendMessage(text='Berikut list meme : '+', '.join(daftar_meme)))
         # ougi
         elif cmd.group() == '#ougi':
             line_bot_api.reply_message(
