@@ -131,7 +131,9 @@ def handle_text_message(event):
         # info
         elif cmd.group() == '#info':
             line_bot_api.reply_message(
-                event.reply_token, TextSendMessage(text='Dibuat sebagai project pembelajaran oleh: Ikraduya Edian(line:ikraduya)'))
+                event.reply_token, TextSendMessage(text="""Dibuat sebagai project pembelajaran oleh: Ikraduya Edian(line:ikraduya) dan kontributor: Farisan, Radit, Ojan
+                                                        Kritik dan saran mohon dikirimkan lewat (line:ikraduya), terima kasih.                                                       
+                                                        """))
         # jurus
         elif cmd.group(1) == 'jurus':
             if cmd.group(2) in daftar_jurus:
