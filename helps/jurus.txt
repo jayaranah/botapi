@@ -1,0 +1,4 @@
+Penggunaan : #jurus <nama jurus>
+Menyuruh acchan untuk menggunakan Jurusnya.
+Untuk menampilkan daftar jurus yang dikuasai acchan, ketik '#ougi'
+Contoh : #jurus naga kacang

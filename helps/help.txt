@@ -1,0 +1,3 @@
+Penggunaan : #help atau #help <perintah>
+Kamu bisa menggunakan '#help' untuk melihat daftar perintah yang dapat digunakan atau '#help <perintah>' untuk keterangan <perintah> lebih lanjut.
+Contoh: #help help

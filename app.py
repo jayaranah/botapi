@@ -83,28 +83,12 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
     text = event.message.text
+    daftar_jurus = {'naga kacang':'nagakacang.txt'}
+    daftar_cmd = ['bye', 'help', 'info', 'jurus', 'ougi', 'panggil', 'profil']
     if text[0] == '#':
         cmd = search(r'\#(\w*)\s*(.*)', text)
-        # profile
-        if cmd.group() == '#profile':
-            if isinstance(event.source, SourceUser):
-                profile = line_bot_api.get_profile(event.source.user_id)
-                line_bot_api.reply_message(
-                    event.reply_token, [
-                        TextSendMessage(
-                            text='Hai ' + profile.display_name
-                        ),
-                        TextSendMessage(
-                            text='Status message mu: ' + profile.status_message
-                        )
-                    ]
-                )
-            else:
-                line_bot_api.reply_message(
-                    event.reply_token,
-                    TextSendMessage(text="Aduuh.. perintah #profile harus digunakan melalui personal chat yaa"))
         # bye
-        elif cmd.group() == '#bye':
+        if cmd.group() == '#bye':
             if isinstance(event.source, SourceGroup) or isinstance(event.source, SourceRoom):
                 image_message = ImageSendMessage(
                     original_content_url='https://image.ibb.co/dz0HXv/akatsukileave.jpg',
@@ -120,33 +104,66 @@ def handle_text_message(event):
                 line_bot_api.reply_message(
                     event.reply_token,
                     TextMessage(text="Mana bisa keluar dari personal chat qaqa ^-^"))
+        # help
+        elif cmd.group(1) == 'help':
+            if cmd.group() == '#help':
+                line_bot_api.reply_message(
+                    event.reply_token, TextSendMessage(text="""list perintah :
+                                                            """+', '.join(daftar_cmd)+"""
+                                                            Gunakan '#' di awal perintah
+                                                            untuk lebih jelas ketik '#help <perintah>'
+                                                            contoh: #help jurus"""))
+            elif cmd.group(2) in daftar_cmd:
+                f = open('helps/'+cmd.group(2)+'.txt', 'r')
+                help_text = f.read()
+                line_bot_api.reply_message(
+                    event.reply_token, [TextSendMessage(text="Bantuan untuk : '#"+cmd.group(2)+"'"), TextSendMessage(text=help_text)])
+                f.close()
+            else:
+                line_bot_api.reply_message(
+                    event.reply_token, [
+                    TextSendMessage(text='mana ada perintah itu'),
+                    TextSendMessage(text='Berikut list perintah : '+', '.join(daftar_cmd))])
         # info
         elif cmd.group() == '#info':
             line_bot_api.reply_message(
                 event.reply_token, TextSendMessage(text='Dibuat sebagai project pembelajaran oleh: Ikraduya Edian(line:ikraduya)'))
-        # help
-        elif cmd.group() == '#help':
+        # jurus
+        elif cmd.group(1) == 'jurus':
+            if cmd.group(2) in daftar_jurus:
+                f = open('statics/' + daftar_jurus[cmd.group(2)], 'r')
+                line_bot_api.reply_message(
+                    event.reply_token, [TextSendMessage(text=('JURUS '+cmd.group(2)).upper() + '!'),
+                                        TextSendMessage(text=str(f.read()))])
+                f.close()
+            elif cmd.group(2) == '':
+                line_bot_api.reply_message(
+                    event.reply_token, TextSendMessage(text='Jurus apa qaqa??'))
+            else:
+                line_bot_api.reply_message(
+                    event.reply_token, TextSendMessage(text='Mana ada jurus begitu..'))
+        # ougi
+        elif cmd.group() == '#ougi':
             line_bot_api.reply_message(
-                event.reply_token, TextSendMessage(text="""list perintah :
-                                                        buttons, bye, confirm, help, info, naga kacang, panggil
-                                                        Gunakan '#' di awal perintah
-                                                        contoh: #profile"""))
+                    event.reply_token, TextSendMessage(text='Daftar jurus : '+', '.join(daftar_jurus)))
         # panggil
         elif cmd.group() == '#panggil':
             line_bot_api.reply_message(
                 event.reply_token, TextSendMessage(text="It's curry night!"))
-        # jurus
-        elif cmd.group(1) == 'jurus':
-            daftar_jurus = {'naga kacang':'nagakacang.txt'}
-            if cmd.group(2) in daftar_jurus:
-                f = open('statics/' + daftar_jurus[cmd.group(2)], 'r')
+        # profil
+        elif cmd.group() == '#profil':
+            if isinstance(event.source, SourceUser) or isinstance(event.source, SourceRoom) or isinstance(event.source, SourceGroup):
+                profile = line_bot_api.get_profile(event.source.user_id)
                 line_bot_api.reply_message(
-                    event.reply_token, [TextSendMessage(text=('Jurus '+cmd.group(2).upper() + '!')),
-                                        TextSendMessage(text=str(f.read()))])
-                f.close()
-            else:
-                line_bot_api.reply_message(
-                    event.reply_token, TextSendMessage(text='Mana ada jurus begitu..'))
+                    event.reply_token, [
+                        TextSendMessage(
+                            text='Hai ' + profile.display_name
+                        ),
+                        TextSendMessage(
+                            text='Status message mu: ' + profile.status_message
+                        )
+                    ]
+                )
         # need help?
         else:
             line_bot_api.reply_message(
@@ -159,7 +176,7 @@ def handle_join(event):
     if event.source.type == 'group':
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text='Watashinonamaeha akatsukidesu')
+            TextSendMessage(text='Watashinonamaeha akatsukidesu ;-;')
             )
 
 

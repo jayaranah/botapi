@@ -1,0 +1,3 @@
+Penggunaan : #panggil
+Memanggil Acchan keluar dari persembunyiannya.
+Contoh : #panggil

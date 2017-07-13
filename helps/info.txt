@@ -1,0 +1,3 @@
+Penggunaan : #info
+Menampilkan informasi tentang Acchan.
+Contoh : #info
