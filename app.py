@@ -115,7 +115,8 @@ def handle_text_message(event):
         # help
         elif cmd.group(1) == 'help':
             if cmd.group() == '#help':
-                txt = """list perintah : """+', '.join(daftar_cmd.sort())+"""
+                srt = daftar_cmd.sort()
+                txt = """list perintah : """+ ', '.join(srt) + """
                         Gunakan '#' di awal perintah
                         untuk lebih jelas ketik '#help <perintah>'
                         contoh: #help jurus"""
@@ -168,7 +169,8 @@ def handle_text_message(event):
                     event.reply_token, TextSendMessage(text="Untuk melihat list tag ketik '#taglist'"))
         # taglist
         elif cmd.group() == '#taglist':
-            txt = 'Berikut list tag : '+', '.join(daftar_tag.sort())
+            srt = daftar_tag.sort()
+            txt = 'Berikut list tag : '+', '.join(srt)
             line_bot_api.reply_message(
                     event.reply_token, TextSendMessage(text=txt))
         # so
@@ -178,7 +180,8 @@ def handle_text_message(event):
                     event.reply_token, TextSendMessage(text=txt))
         # ougi
         elif cmd.group() == '#ougi':
-            txt = 'Daftar jurus : '+', '.join(daftar_jurus.sort())
+            srt = daftar_jurus.sort()
+            txt = 'Daftar jurus : '+', '.join(srt)
             line_bot_api.reply_message(
                     event.reply_token, TextSendMessage(text=txt))
         # panggil
