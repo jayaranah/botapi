@@ -24,6 +24,7 @@ img_url = { 'bye':['https://image.ibb.co/ibvkKa/akatsukileave.jpg','https://imag
             'weewoo':['https://image.ibb.co/jmejUa/weewoo.jpg','https://image.ibb.co/hrStNv/weewoo_prev.jpg'],
             'yamete':['https://image.ibb.co/fMADNv/yamete.jpg','https://image.ibb.co/fMADNv/yamete.jpg'],
             'otak dengkul':['https://image.ibb.co/dngEUa/otakdengkul.jpg','https://image.ibb.co/kuEUvF/otakdengkul_prev.jpg'],
+            'perhaps':['http://i.memeful.com/media/post/ewY4Zjd_700w_0.jpg':'https://image.ibb.co/hSi0LF/perhaps_prev.jpg'],
            }
 f = open('statics/gombal.txt', 'r')
 list_gombal = (f.read()).splitlines()
