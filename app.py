@@ -85,16 +85,20 @@ def handle_text_message(event):
     text = event.message.text
     daftar_jurus = {'naga kacang':'nagakacang.txt'}
     daftar_cmd = ['bye', 'help', 'info', 'jurus', 'ougi', 'panggil', 'profil']
-    ori_ct_url = {'bye':'https://image.ibb.co/dz0HXv/akatsukileave.jpg'}
-    prev_img_url = {'bye':'https://image.ibb.co/bYMPCv/akatsukileave_prev.jpg'}
+    img_url = {'bye':
+                   ['https://image.ibb.co/ibvkKa/akatsukileave.jpg','https://image.ibb.co/meYGQF/akatsukileave_prev.jpg'],
+               'gagal ambis':
+                   ['https://image.ibb.co/hH2Msv/gagal_ngambis.jpg','https://image.ibb.co/mkb35F/gagal_ngambis_prev.jpg'],
+        
+                }
     if text[0] == '#':
         cmd = search(r'\#(\w*)\s*(.*)', text)
         # bye
         if cmd.group() == '#bye':
             if isinstance(event.source, SourceGroup) or isinstance(event.source, SourceRoom):
                 image_message = ImageSendMessage(
-                    original_content_url=ori_ct_url[cmd.group(1)],
-                    preview_image_url=prev_img_url[cmd.group(1)])
+                    original_content_url=img_url[cmd.group(1)][0],
+                    preview_image_url=img_url[cmd.group(1)][1])
                 text_message1 = TextMessage(text='"There are things you can only learn by accepting your weakness."')
                 text_message2 = TextMessage(text='Selamat tinggal ^_^')
                 line_bot_api.reply_message(event.reply_token, [image_message, text_message1, text_message2])
