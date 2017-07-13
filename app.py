@@ -90,13 +90,13 @@ def handle_text_message(event):
         #profile = line_bot_api.get_profile(event.source.user_id)
         if (cmd.group(1) == 'su') and (event.source.user_id == master_id):
             if cmd.group(2) == 'groupid':
-                line_bot_api.reply_message(event.reply_token, text=event.source.group_id)
+                line_bot_api.reply_message(event.reply_token, TextMessage(text=event.source.group_id))
             elif cmd.group(2) == 'acchan':
-                line_bot_api.reply_message(event.reply_token, text='Ya Master?')
+                line_bot_api.reply_message(event.reply_token, TextMessage(text='Ya Master?'))
             elif cmd.group(2) == 'thanks':
-                line_bot_api.reply_message(event.reply_token, text='Anytime Master')
+                line_bot_api.reply_message(event.reply_token, TextMessage(text='Anytime Master'))
             else:
-                line_bot_api.reply_message(event.reply_token, text='Kenapa Master?')
+                line_bot_api.reply_message(event.reply_token, TextMessage(text='Kenapa Master?'))
         # bye
         elif cmd.group() == '#bye':
             if isinstance(event.source, SourceGroup) or isinstance(event.source, SourceRoom):
