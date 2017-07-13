@@ -20,6 +20,7 @@ import sys
 import tempfile
 from var import *
 from re import search
+from random import choice
 from argparse import ArgumentParser
 
 from flask import Flask, request, abort
@@ -84,7 +85,6 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
     text = event.message.text
-    
     if text[0] == '#':
         cmd = search(r'\#(\w*)\s*(.*)', text)
         # bye
@@ -104,6 +104,10 @@ def handle_text_message(event):
                 line_bot_api.reply_message(
                     event.reply_token,
                     TextMessage(text="Mana bisa keluar dari personal chat qaqa ^-^"))
+        # gombal
+        elif cmd.group() == '#gombal':
+            line_bot_api.reply_message(
+                    event.reply_token, TextSendMessage(text=choice(list_gombal)))
         # help
         elif cmd.group(1) == 'help':
             if cmd.group() == '#help':
