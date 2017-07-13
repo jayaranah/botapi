@@ -155,6 +155,10 @@ def handle_text_message(event):
         elif cmd.group() == '#tags':
             line_bot_api.reply_message(
                     event.reply_token, TextSendMessage(text='Berikut list tag : '+', '.join(daftar_tag)))
+        # so
+        elif cmd.group(1) == 'so':
+            line_bot_api.reply_message(
+                    event.reply_token, TextSendMessage(text=' '.join((cmd.group(2).replace(" ","")).upper())))
         # ougi
         elif cmd.group() == '#ougi':
             line_bot_api.reply_message(
