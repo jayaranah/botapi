@@ -48,6 +48,7 @@ app = Flask(__name__)
 channel_access_token = str(os.environ.get('CHANNEL_ACCESS_TOKEN'))
 channel_secret = str(os.environ.get('CHANNEL_SECRET'))
 master_id = str(os.environ.get('MASTER_ID'))
+altia_id = str(os.environ.get('ALTIA_ID'))
 line_bot_api = LineBotApi(channel_access_token)
 handler = WebhookHandler(channel_secret)
 
@@ -97,6 +98,9 @@ def handle_text_message(event):
                 line_bot_api.reply_message(event.reply_token, TextMessage(text='Anytime Master'))
             else:
                 line_bot_api.reply_message(event.reply_token, TextMessage(text='Kenapa Master?'))
+        # bolehkah
+        elif cmd.group(1) == 'bolehkah':
+            pass
         # bye
         elif cmd.group() == '#bye':
             if isinstance(event.source, SourceGroup) or isinstance(event.source, SourceRoom):
@@ -166,17 +170,27 @@ def handle_text_message(event):
                     event.reply_token, TextSendMessage(text="Mana ada jurus begitu.. untuk melihat list jurus ketik '#ougi'"))
         # tag
         elif cmd.group(1) == 'tag':
+            if isinstance(event.source, SourceGroup):
+                if event.source.group_id == altia_id:
+                    pake_ini = img_url_tag_gab
+                else:
+                    pake_ini = img_url_tag
             if cmd.group(2) in img_url_tag:
                 image_message = ImageSendMessage(
-                    original_content_url=img_url_tag[cmd.group(2)][0],
-                    preview_image_url=img_url_tag[cmd.group(2)][1])
+                    original_content_url=pake_ini[cmd.group(2)][0],
+                    preview_image_url=pake_ini[cmd.group(2)][1])
                 line_bot_api.reply_message(event.reply_token, image_message)
             else:
                 line_bot_api.reply_message(
                     event.reply_token, TextSendMessage(text="Untuk melihat list tag ketik '#taglist'"))
         # taglist
         elif cmd.group() == '#taglist':
-            srt = sorted(img_url_tag)
+            if isinstance(event.source, SourceGroup):
+                if event.source.group_id == altia_id:
+                    pake_ini = img_url_tag_gab
+                else:
+                    pake_ini = img_url_tag
+            srt = sorted(pake_ini)
             txt = 'Berikut list tag : '+', '.join(srt)
             line_bot_api.reply_message(
                     event.reply_token, TextSendMessage(text=txt))
@@ -218,10 +232,15 @@ def handle_text_message(event):
     # shortcut tag
     elif (text[0] == '/') and (text[len(text)-1] == '/'):
         judul_tag = search(r'\/(.*)',text).group(1)[:-1]
-        if judul_tag in img_url_tag:
+        if isinstance(event.source, SourceGroup):
+            if event.source.group_id == altia_id:
+                pake_ini = img_url_tag_gab
+            else:
+                pake_ini = img_url_tag
+        if judul_tag in pake_ini:
             image_message = ImageSendMessage(
-                    original_content_url=img_url_tag[judul_tag][0],
-                    preview_image_url=img_url_tag[judul_tag][1])
+                    original_content_url=pake_ini[judul_tag][0],
+                    preview_image_url=pake_ini[judul_tag][1])
             line_bot_api.reply_message(event.reply_token, image_message)
         else:
             line_bot_api.reply_message(
