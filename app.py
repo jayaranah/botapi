@@ -115,7 +115,7 @@ def handle_text_message(event):
         # help
         elif cmd.group(1) == 'help':
             if cmd.group() == '#help':
-                srt = daftar_cmd.sort()
+                srt = sorted(daftar_cmd)
                 txt = """list perintah : """+ ', '.join(srt) + """
                         Gunakan '#' di awal perintah
                         untuk lebih jelas ketik '#help <perintah>'
