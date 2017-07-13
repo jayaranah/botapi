@@ -116,7 +116,7 @@ def handle_text_message(event):
         elif cmd.group(1) == 'help':
             if cmd.group() == '#help':
                 line_bot_api.reply_message(
-                    event.reply_token, TextSendMessage(text="""list perintah : """+', '.join(daftar_cmd)+"""
+                    event.reply_token, TextSendMessage(text="""list perintah : """+', '.join(daftar_cmd.sort())+"""
                                                             Gunakan '#' di awal perintah
                                                             untuk lebih jelas ketik '#help <perintah>'
                                                             contoh: #help jurus"""))
@@ -130,11 +130,11 @@ def handle_text_message(event):
                 line_bot_api.reply_message(
                     event.reply_token, [
                     TextSendMessage(text='Mana ada perintah itu'),
-                    TextSendMessage(text='Berikut list perintah : '+', '.join(daftar_cmd))])
+                    TextSendMessage(text='Berikut list perintah : '+', '.join(daftar_cmd.sort()))])
         # info
         elif cmd.group() == '#info':
             line_bot_api.reply_message(
-                event.reply_token, TextSendMessage(text="""Dibuat sebagai project pembelajaran oleh: Ikraduya Edian(line:ikraduya) dan kontributor: Farisan, Radit, Ojan
+                event.reply_token, TextSendMessage(text="""Dibuat sebagai project pembelajaran oleh: Ikraduya Edian(line:ikraduya) dan kontributor: Farisan, Radit, Ojan, Jodi, Altia
                                                         Kritik dan saran mohon dikirimkan lewat (line:ikraduya), terima kasih.                                                       
                                                         """))
         # jurus
@@ -160,11 +160,11 @@ def handle_text_message(event):
                 line_bot_api.reply_message(event.reply_token, image_message)
             else:
                 line_bot_api.reply_message(
-                    event.reply_token, TextSendMessage(text="Untuk melihat list tag ketik '#tags'"))
+                    event.reply_token, TextSendMessage(text="Untuk melihat list tag ketik '#taglist'"))
         # taglist
         elif cmd.group() == '#taglist':
             line_bot_api.reply_message(
-                    event.reply_token, TextSendMessage(text='Berikut list tag : '+', '.join(daftar_tag)))
+                    event.reply_token, TextSendMessage(text='Berikut list tag : '+', '.join(daftar_tag.sort())))
         # so
         elif cmd.group(1) == 'so':
             line_bot_api.reply_message(
@@ -172,7 +172,7 @@ def handle_text_message(event):
         # ougi
         elif cmd.group() == '#ougi':
             line_bot_api.reply_message(
-                    event.reply_token, TextSendMessage(text='Daftar jurus : '+', '.join(daftar_jurus)))
+                    event.reply_token, TextSendMessage(text='Daftar jurus : '+', '.join(daftar_jurus.sort())))
         # panggil
         elif cmd.group() == '#panggil':
             line_bot_api.reply_message(
