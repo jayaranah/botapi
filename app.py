@@ -51,6 +51,7 @@ handler = WebhookHandler(channel_secret)
 
 #static_tmp_path = os.path.join(os.path.dirname(__file__), 'static', 'tmp')#
 
+"""
 # function for create tmp dir for download content
 def make_static_tmp_dir():
     try:
@@ -60,7 +61,7 @@ def make_static_tmp_dir():
             pass
         else:
             raise
-
+"""
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -187,7 +188,7 @@ def handle_beacon(event):
 if __name__ == "__main__":
     
     # create tmp dir for download content
-    make_static_tmp_dir()
+    #make_static_tmp_dir()
     
     port = int(os.environ.get("PORT", 33507))
     app.run(host='0.0.0.0', port=port)
