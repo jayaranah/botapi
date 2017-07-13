@@ -1,6 +1,7 @@
 daftar_jurus = {'naga kacang':'nagakacang.txt'}
 daftar_cmd = ['bye', 'gombal', 'help', 'info', 'jurus', 'tag', 'taglist', 'ougi', 'panggil', 'profil', 'so']
-daftar_tag = ['gagal ambis']
+daftar_tag = ['gagal ambis','gagal ambis','alone','disgusting','jalan setan','jaga ketikan','kok sepi','matte','mecin','moshi','mwhaha','nani','NO','NOOO','pintar',
+              'rasenggan','savage','sepi','weewoo','yamete','otak dengkul']
 img_url = { 'bye':['https://image.ibb.co/ibvkKa/akatsukileave.jpg','https://image.ibb.co/meYGQF/akatsukileave_prev.jpg'],
             'gagal ambis':['https://image.ibb.co/hH2Msv/gagal_ngambis.jpg','https://image.ibb.co/mkb35F/gagal_ngambis_prev.jpg'],
             'alone':['https://image.ibb.co/g9OHhv/alone_prev.jpg','https://image.ibb.co/cahopa/disgusting.jpg'],
