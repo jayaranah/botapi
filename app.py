@@ -155,9 +155,6 @@ def handle_text_message(event):
                     original_content_url=img_url[cmd.group(2)][0],
                     preview_image_url=img_url[cmd.group(2)][1])
                 line_bot_api.reply_message(event.reply_token, image_message)
-            elif cmd.group(2) == '':
-                line_bot_api.reply_message(
-                    event.reply_token, TextSendMessage(text='Haaa?'))
             else:
                 line_bot_api.reply_message(
                     event.reply_token, TextSendMessage(text='Berikut list meme : '+', '.join(daftar_meme)))
