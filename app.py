@@ -117,9 +117,9 @@ def handle_text_message(event):
             if cmd.group() == '#help':
                 srt = sorted(daftar_cmd)
                 txt = """list perintah : """+ ', '.join(srt) + """
-                        Gunakan '#' di awal perintah
-                        untuk lebih jelas ketik '#help <perintah>'
-                        contoh: #help jurus"""
+                    Gunakan '#' di awal perintah
+                    untuk lebih jelas ketik '#help <perintah>'
+                    contoh: #help jurus"""
                 line_bot_api.reply_message(
                     event.reply_token, TextSendMessage(text=txt))
             elif cmd.group(2) in daftar_cmd:
@@ -130,7 +130,7 @@ def handle_text_message(event):
                     event.reply_token, [TextSendMessage(text=txt), TextSendMessage(text=help_text)])
                 f.close()
             else:
-                txt = 'Berikut list perintah : '+', '.join(daftar_cmd.sort())
+                txt = 'Berikut list perintah : '+', '.join(sorted(daftar_cmd))
                 line_bot_api.reply_message(
                     event.reply_token, [
                     TextSendMessage(text='Mana ada perintah itu'),
@@ -169,7 +169,7 @@ def handle_text_message(event):
                     event.reply_token, TextSendMessage(text="Untuk melihat list tag ketik '#taglist'"))
         # taglist
         elif cmd.group() == '#taglist':
-            srt = daftar_tag.sort()
+            srt = sorted(daftar_tag)
             txt = 'Berikut list tag : '+', '.join(srt)
             line_bot_api.reply_message(
                     event.reply_token, TextSendMessage(text=txt))
@@ -180,7 +180,7 @@ def handle_text_message(event):
                     event.reply_token, TextSendMessage(text=txt))
         # ougi
         elif cmd.group() == '#ougi':
-            srt = daftar_jurus.sort()
+            srt = sorted(daftar_jurus)
             txt = 'Daftar jurus : '+', '.join(srt)
             line_bot_api.reply_message(
                     event.reply_token, TextSendMessage(text=txt))
