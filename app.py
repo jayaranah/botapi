@@ -85,7 +85,7 @@ def handle_text_message(event):
     if text[0] == '#':
         cmd = search(r'\#(\w*)\s*(.*)', text)
         # profile
-        if cmd.group() == '#profile'):
+        if cmd.group() == '#profile':
             if isinstance(event.source, SourceUser):
                 profile = line_bot_api.get_profile(event.source.user_id)
                 line_bot_api.reply_message(
