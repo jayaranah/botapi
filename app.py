@@ -105,8 +105,11 @@ def handle_text_message(event):
                     event.reply_token,
                     TextMessage(text="Mana bisa keluar dari personal chat qaqa ^-^"))
         # gombal
-        elif cmd.group() == '#gombal':
-            txt = choice(list_gombal)
+        elif cmd.group(1) == 'gombal':
+            if cmd.group(2) != '':
+                txt = 'eh ' + cmd.group(2) + ',\n' + choice(list_gombal)
+            else:
+                txt = choice(list_gombal)
             line_bot_api.reply_message(
                 event.reply_token, TextSendMessage(text=txt))
         # help
