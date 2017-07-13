@@ -115,22 +115,25 @@ def handle_text_message(event):
         # help
         elif cmd.group(1) == 'help':
             if cmd.group() == '#help':
+                txt = """list perintah : """+', '.join(daftar_cmd.sort())+"""
+                        Gunakan '#' di awal perintah
+                        untuk lebih jelas ketik '#help <perintah>'
+                        contoh: #help jurus"""
                 line_bot_api.reply_message(
-                    event.reply_token, TextSendMessage(text="""list perintah : """+', '.join(daftar_cmd.sort())+"""
-                                                            Gunakan '#' di awal perintah
-                                                            untuk lebih jelas ketik '#help <perintah>'
-                                                            contoh: #help jurus"""))
+                    event.reply_token, TextSendMessage(text=txt))
             elif cmd.group(2) in daftar_cmd:
                 f = open('helps/'+cmd.group(2)+'.txt', 'r')
                 help_text = f.read()
+                txt = "Bantuan untuk : '#"+cmd.group(2)+"'"
                 line_bot_api.reply_message(
-                    event.reply_token, [TextSendMessage(text="Bantuan untuk : '#"+cmd.group(2)+"'"), TextSendMessage(text=help_text)])
+                    event.reply_token, [TextSendMessage(text=txt), TextSendMessage(text=help_text)])
                 f.close()
             else:
+                txt = 'Berikut list perintah : '+', '.join(daftar_cmd.sort())
                 line_bot_api.reply_message(
                     event.reply_token, [
                     TextSendMessage(text='Mana ada perintah itu'),
-                    TextSendMessage(text='Berikut list perintah : '+', '.join(daftar_cmd.sort()))])
+                    TextSendMessage(text=txt)])
         # info
         elif cmd.group() == '#info':
             line_bot_api.reply_message(
@@ -141,9 +144,11 @@ def handle_text_message(event):
         elif cmd.group(1) == 'jurus':
             if cmd.group(2) in daftar_jurus:
                 f = open('statics/' + daftar_jurus[cmd.group(2)], 'r')
+                txt = ('JURUS '+cmd.group(2)).upper() + '!'
+                txt2 = str(f.read())
                 line_bot_api.reply_message(
-                    event.reply_token, [TextSendMessage(text=('JURUS '+cmd.group(2)).upper() + '!'),
-                                        TextSendMessage(text=str(f.read()))])
+                    event.reply_token, [TextSendMessage(text=txt),
+                                        TextSendMessage(text=txt2)])
                 f.close()
             elif cmd.group(2) == '':
                 line_bot_api.reply_message(
@@ -163,16 +168,19 @@ def handle_text_message(event):
                     event.reply_token, TextSendMessage(text="Untuk melihat list tag ketik '#taglist'"))
         # taglist
         elif cmd.group() == '#taglist':
+            txt = 'Berikut list tag : '+', '.join(daftar_tag.sort())
             line_bot_api.reply_message(
-                    event.reply_token, TextSendMessage(text='Berikut list tag : '+', '.join(daftar_tag.sort())))
+                    event.reply_token, TextSendMessage(text=txt))
         # so
         elif cmd.group(1) == 'so':
+            txt = ' '.join((cmd.group(2).replace(" ","")).upper())
             line_bot_api.reply_message(
-                    event.reply_token, TextSendMessage(text=' '.join((cmd.group(2).replace(" ","")).upper())))
+                    event.reply_token, TextSendMessage(text=txt))
         # ougi
         elif cmd.group() == '#ougi':
+            txt = 'Daftar jurus : '+', '.join(daftar_jurus.sort())
             line_bot_api.reply_message(
-                    event.reply_token, TextSendMessage(text='Daftar jurus : '+', '.join(daftar_jurus.sort())))
+                    event.reply_token, TextSendMessage(text=txt))
         # panggil
         elif cmd.group() == '#panggil':
             line_bot_api.reply_message(
@@ -181,13 +189,15 @@ def handle_text_message(event):
         elif cmd.group() == '#profil':
             if isinstance(event.source, SourceUser) or isinstance(event.source, SourceRoom) or isinstance(event.source, SourceGroup):
                 profile = line_bot_api.get_profile(event.source.user_id)
+                txt = 'Hai ' + profile.display_name
+                txt2 = 'Status message mu: ' + profile.status_message
                 line_bot_api.reply_message(
                     event.reply_token, [
                         TextSendMessage(
-                            text='Hai ' + profile.display_name
+                            text=txt
                         ),
                         TextSendMessage(
-                            text='Status message mu: ' + profile.status_message
+                            text=txt2
                         )
                     ]
                 )
@@ -205,7 +215,7 @@ def handle_text_message(event):
             line_bot_api.reply_message(event.reply_token, image_message)
         else:
             line_bot_api.reply_message(
-                    event.reply_token, TextSendMessage(text="Untuk melihat list tag ketik '#tags'"))
+                    event.reply_token, TextSendMessage(text="Untuk melihat list tag ketik '#taglist'"))
             
 
 # handle join event
