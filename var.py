@@ -4,8 +4,9 @@ daftar_tag = ['gagal ambis','alone','disgusting','jalan setan','jaga ketikan','k
               'rasenggan','savage','sepi','weewoo','yamete','otak dengkul']
 img_url = { 'bye':['https://image.ibb.co/ibvkKa/akatsukileave.jpg','https://image.ibb.co/meYGQF/akatsukileave_prev.jpg'],
             'gagal ambis':['https://image.ibb.co/hH2Msv/gagal_ngambis.jpg','https://image.ibb.co/mkb35F/gagal_ngambis_prev.jpg'],
-            'alone':['https://image.ibb.co/g9OHhv/alone_prev.jpg','https://image.ibb.co/cahopa/disgusting.jpg'],
-            'disgusting':['https://image.ibb.co/gaREUa/disgusting_prev.jpg','https://image.ibb.co/hPE19a/hai.jpg'],
+            'alone':['https://image.ibb.co/g9OHhv/alone_prev.jpg','https://image.ibb.co/g9OHhv/alone_prev.jpg'],
+            'hai':['https://image.ibb.co/hPE19a/hai.jpg','https://image.ibb.co/hPE19a/hai.jpg'],
+            'disgusting':['https://image.ibb.co/cahopa/disgusting.jpg','https://image.ibb.co/gaREUa/disgusting_prev.jpg'],
             'jalan setan':['https://image.ibb.co/mPCA2v/jalansetan.jpg','https://image.ibb.co/eEiTpa/jalansetan_prev.jpg'],
             'jaga ketikan':['https://image.ibb.co/jsGRaF/ketikandijaga.jpg','https://image.ibb.co/e3vKvF/ketikandijaga_prev.jpg'],
             'kok sepi':['https://image.ibb.co/hViiNv/koksepi.jpg','https://image.ibb.co/dWHA2v/koksepi_prev.jpg'],
