@@ -116,10 +116,7 @@ def handle_text_message(event):
         elif cmd.group(1) == 'help':
             if cmd.group() == '#help':
                 srt = sorted(daftar_cmd)
-                txt = """list perintah : """+ ', '.join(srt) + """
-                    Gunakan '#' di awal perintah
-                    untuk lebih jelas ketik '#help <perintah>'
-                    contoh: #help jurus"""
+                txt = """list perintah : """+ ', '.join(srt) + """\nGunakan '#' di awal perintah\nuntuk lebih jelas ketik '#help <perintah>'\ncontoh: #help jurus"""
                 line_bot_api.reply_message(
                     event.reply_token, TextSendMessage(text=txt))
             elif cmd.group(2) in daftar_cmd:
