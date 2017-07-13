@@ -85,14 +85,16 @@ def handle_text_message(event):
     text = event.message.text
     daftar_jurus = {'naga kacang':'nagakacang.txt'}
     daftar_cmd = ['bye', 'help', 'info', 'jurus', 'ougi', 'panggil', 'profil']
+    ori_ct_url = {'bye':'https://image.ibb.co/dz0HXv/akatsukileave.jpg'}
+    prev_img_url = {'bye':'https://image.ibb.co/bYMPCv/akatsukileave_prev.jpg'}
     if text[0] == '#':
         cmd = search(r'\#(\w*)\s*(.*)', text)
         # bye
         if cmd.group() == '#bye':
             if isinstance(event.source, SourceGroup) or isinstance(event.source, SourceRoom):
                 image_message = ImageSendMessage(
-                    original_content_url='https://image.ibb.co/dz0HXv/akatsukileave.jpg',
-                    preview_image_url='https://image.ibb.co/bYMPCv/akatsukileave_prev.jpg')
+                    original_content_url=ori_ct_url[cmd.group(1)],
+                    preview_image_url=ori_img_url[cmd.group(1)])
                 text_message1 = TextMessage(text='"There are things you can only learn by accepting your weakness."')
                 text_message2 = TextMessage(text='Selamat tinggal ^_^')
                 line_bot_api.reply_message(event.reply_token, [image_message, text_message1, text_message2])
@@ -108,8 +110,7 @@ def handle_text_message(event):
         elif cmd.group(1) == 'help':
             if cmd.group() == '#help':
                 line_bot_api.reply_message(
-                    event.reply_token, TextSendMessage(text="""list perintah :
-                                                            """+', '.join(daftar_cmd)+"""
+                    event.reply_token, TextSendMessage(text="""list perintah :"""+', '.join(daftar_cmd)+"""
                                                             Gunakan '#' di awal perintah
                                                             untuk lebih jelas ketik '#help <perintah>'
                                                             contoh: #help jurus"""))
@@ -122,7 +123,7 @@ def handle_text_message(event):
             else:
                 line_bot_api.reply_message(
                     event.reply_token, [
-                    TextSendMessage(text='mana ada perintah itu'),
+                    TextSendMessage(text='Mana ada perintah itu'),
                     TextSendMessage(text='Berikut list perintah : '+', '.join(daftar_cmd))])
         # info
         elif cmd.group() == '#info':
