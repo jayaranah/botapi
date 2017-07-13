@@ -85,7 +85,7 @@ def handle_text_message(event):
     text = event.message.text
     daftar_jurus = {'naga kacang':'nagakacang.txt'}
     daftar_cmd = ['bye', 'help', 'info', 'jurus', 'meme', 'ougi', 'panggil', 'profil']
-    dafter_meme = ['gagal ambis']
+    daftar_meme = ['gagal ambis']
     img_url = {'bye':
                    ['https://image.ibb.co/ibvkKa/akatsukileave.jpg','https://image.ibb.co/meYGQF/akatsukileave_prev.jpg'],
                'gagal ambis':
