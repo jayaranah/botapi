@@ -115,7 +115,7 @@ def handle_text_message(event):
         elif cmd.group(1) == 'help':
             if cmd.group() == '#help':
                 line_bot_api.reply_message(
-                    event.reply_token, TextSendMessage(text="""list perintah :"""+', '.join(daftar_cmd)+"""
+                    event.reply_token, TextSendMessage(text="""list perintah : """+', '.join(daftar_cmd)+"""
                                                             Gunakan '#' di awal perintah
                                                             untuk lebih jelas ketik '#help <perintah>'
                                                             contoh: #help jurus"""))
@@ -193,8 +193,8 @@ def handle_text_message(event):
         judul_tag = search(r'\/(.*)',text).group(1)[:-1]
         if judul_tag in daftar_tag:
             image_message = ImageSendMessage(
-                    original_content_url=img_url[cmd.group(2)][0],
-                    preview_image_url=img_url[cmd.group(2)][1])
+                    original_content_url=img_url[judul_tag][0],
+                    preview_image_url=img_url[judul_tag][1])
             line_bot_api.reply_message(event.reply_token, image_message)
         else:
             line_bot_api.reply_message(
