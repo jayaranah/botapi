@@ -1,0 +1,3 @@
+Penggunaan : #so <kalimat>
+so(Shout Out) -> perintah untuk menegaskan <kalimat>
+Contoh : #so goblog -> G O B L O G
