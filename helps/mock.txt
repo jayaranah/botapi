@@ -1,0 +1,3 @@
+Penggunaan : #mock <kalimat>
+Membuat <kalimat mock> dari <kalimat> yang diberikan
+Contoh : #mock apa kita bisa tenang -> ApA kItA BISa tenAnG

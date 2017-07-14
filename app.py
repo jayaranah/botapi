@@ -171,6 +171,16 @@ def handle_text_message(event):
             else:
                 line_bot_api.reply_message(
                     event.reply_token, TextSendMessage(text="Mana ada jurus begitu.. untuk melihat list jurus ketik '#ougi'"))
+        # mock
+        elif cmd.group(1) == 'mock':
+            new = ''
+            for i in text:
+                if random() > 0.5:
+                    new = new + i.upper()
+                else:
+                    new = new + i.lower()
+            line_bot_api.reply_message(
+                    event.reply_token, TextSendMessage(text=new))
         # tag
         elif cmd.group(1) == 'tag':
             if isinstance(event.source, SourceGroup):

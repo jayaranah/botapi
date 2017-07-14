@@ -1,5 +1,5 @@
 daftar_jurus = {'naga kacang':'nagakacang.txt'}
-daftar_cmd = ['bye', 'gombal', 'help', 'info', 'jurus', 'tag', 'taglist', 'ougi', 'panggil', 'profil', 'so']
+daftar_cmd = ['bye', 'gombal', 'help', 'info', 'jurus', 'tag', 'taglist', 'ougi', 'panggil', 'profil', 'so', 'mock']
 img_url_tag = { 'bye':['https://image.ibb.co/ibvkKa/akatsukileave.jpg','https://image.ibb.co/meYGQF/akatsukileave_prev.jpg'],
             'gagal ambis':['https://image.ibb.co/hH2Msv/gagal_ngambis.jpg','https://image.ibb.co/mkb35F/gagal_ngambis_prev.jpg'],
             'alone':['https://image.ibb.co/g9OHhv/alone_prev.jpg','https://image.ibb.co/g9OHhv/alone_prev.jpg'],
@@ -50,8 +50,27 @@ img_url_tag = { 'bye':['https://image.ibb.co/ibvkKa/akatsukileave.jpg','https://
 f = open('statics/gombal.txt', 'r')
 list_gombal = (f.read()).splitlines()
 f.close()
-altia_url_tag = {'perhaps':['https://image.ibb.co/jB2YqF/perhaps.jpg','https://image.ibb.co/hSi0LF/perhaps_prev.jpg'],
-                 #'':['',''],
-                 #'':['',''],
+altia_url_tag ={'perhaps':['https://image.ibb.co/jB2YqF/perhaps.jpg','https://image.ibb.co/hSi0LF/perhaps_prev.jpg'],
+                'bb++':['https://image.ibb.co/gYWwSv/bb.jpg','https://image.ibb.co/cAPuEa/bb_prev.jpg'],
+                'deal with it':['https://image.ibb.co/dqWKfF/dealwithit.jpg','https://image.ibb.co/kg1wSv/dealwithit_prev.jpg'],
+                'diem lu':['https://image.ibb.co/iZtAnv/diemlu.jpg','https://image.ibb.co/gMAC0F/diemlu_prev.jpg'],
+                'dude what':['https://image.ibb.co/gtcEEa/dude_what.jpg','https://image.ibb.co/gGrD7v/dude_what_prev.jpg'],
+                'ehe':['https://image.ibb.co/hnUN0F/ehe.jpg','https://image.ibb.co/bRjpfF/ehe_prev.jpg'],
+                'fokyeah':['https://image.ibb.co/cnL6Sv/fokyeah.jpg','https://image.ibb.co/irmfnv/fokyeah_prev.jpg'],
+                'hoam':['https://image.ibb.co/iGDRSv/hoam.jpg','https://image.ibb.co/bDO4Ea/hoam_prev.jpg'],
+                'kata pak haji':['https://image.ibb.co/bVRD7v/katapakhaji.jpg','https://image.ibb.co/h30vLF/katapakhaji_prev.jpg'],
+                'kelereng kuy':['https://image.ibb.co/ftbrua/kelerengkuy.jpg','https://image.ibb.co/drg20F/kelerengkuy_prev.jpg'],
+                'leh uga u':['https://image.ibb.co/nhKBua/lehuga.jpg','https://image.ibb.co/mqr20F/lehuga_prev.jpg'],
+                'mantep':['https://image.ibb.co/hFMfnv/mantep.jpg','https://image.ibb.co/gboRSv/mantep_prev.jpg'],
+                'mantepv2':['https://image.ibb.co/gPiRSv/mantepv2.jpg','https://image.ibb.co/nJppfF/mantepv2_prev.jpg'],
+                'mantepv3':['https://image.ibb.co/noZBua/mantepv3.jpg','https://image.ibb.co/fcEY7v/mantepv3_prev.jpg'],
+                'mavok':['https://image.ibb.co/bYqjEa/mavok.jpg','https://image.ibb.co/cLupfF/mavok_prev.jpg'],
+                'metbobo':['https://image.ibb.co/cqoFLF/metbobo.jpg','https://image.ibb.co/c60UfF/metbobo_prev.jpg'],
+                'peace':['https://image.ibb.co/giqjEa/peace.jpg','https://image.ibb.co/hXcWua/peace_prev.jpg'],
+                'sini sama om':['https://image.ibb.co/m8SmSv/sinisamaom.jpg','https://image.ibb.co/ipSxZa/sinisamaom_prev.jpg'],
+                'slenderman':['https://image.ibb.co/g2CmSv/slenderman.jpg','https://image.ibb.co/hL8h0F/slenderman_prev.jpg'],
+                'star wars':['https://image.ibb.co/fHSaLF/starwars.jpg','https://image.ibb.co/ePC9fF/starwars_prev.jpg'],
+                'tercengang':['https://image.ibb.co/nAF6Sv/tercengang.jpg','https://image.ibb.co/k5F6Sv/tercengang_prev.jpg'],
+                'tersyakiti':['https://image.ibb.co/jbpN0F/tersyakiti.jpg','https://image.ibb.co/gJhLnv/tersyakiti_prev.jpg'],
                  #'':['',''],
                  }
