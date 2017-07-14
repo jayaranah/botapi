@@ -1,5 +1,5 @@
 daftar_jurus = {'naga kacang':'nagakacang.txt'}
-daftar_cmd = ['bye', 'gombal', 'help', 'info', 'jurus', 'tag', 'taglist', 'ougi', 'panggil', 'profil', 'so', 'mock']
+daftar_cmd = ['bye', 'gombal', 'help', 'info', 'jurus', 'tag', 'taglist', 'ougi', 'panggil', 'profil', 'so', 'mock', 'bolehkah']
 img_url_tag = { 'bye':['https://image.ibb.co/ibvkKa/akatsukileave.jpg','https://image.ibb.co/meYGQF/akatsukileave_prev.jpg'],
             'gagal ambis':['https://image.ibb.co/hH2Msv/gagal_ngambis.jpg','https://image.ibb.co/mkb35F/gagal_ngambis_prev.jpg'],
             'alone':['https://image.ibb.co/g9OHhv/alone_prev.jpg','https://image.ibb.co/g9OHhv/alone_prev.jpg'],
@@ -89,3 +89,4 @@ altia_url_tag ={'perhaps':['https://image.ibb.co/jB2YqF/perhaps.jpg','https://im
                 'tertangkap basah':['https://image.ibb.co/neFJqF/tertangkap_basah_prev.jpg','https://image.ibb.co/nLEdqF/tertangkapbasah.jpg'],
                  #'':['',''],
                  }
+jawaban_bolehkah = ['boleh', 'ngga boleh', 'mana ketehek', 'apaan sih nanya-nanya acchan', 'G tau', 'boleh ngettzz', 'boleh banget qaqa', 'pikir ndiri', 'no komen']

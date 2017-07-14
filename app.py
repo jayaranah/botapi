@@ -92,7 +92,7 @@ def handle_text_message(event):
     text = event.message.text
     if text[0] == '#':
         cmd = search(r'\#(\w*)\s*(.*)', text)
-        #profile = line_bot_api.get_profile(event.source.user_id)
+        # super user command
         if (cmd.group(1) == 'su') and (event.source.user_id == master_id):
             if cmd.group(2) == 'groupid':
                 line_bot_api.reply_message(event.reply_token, TextMessage(text=event.source.group_id))
@@ -104,7 +104,8 @@ def handle_text_message(event):
                 line_bot_api.reply_message(event.reply_token, TextMessage(text='Kenapa Master?'))
         # bolehkah
         elif cmd.group(1) == 'bolehkah':
-            pass
+            txt = cmd.group(1) + ' ' + text +'\n\n'+ choice(jawaban_bolehkah)
+            line_bot_api.reply_message(event.reply_token, TextMessage(text=txt))
         # bye
         elif cmd.group() == '#bye':
             if isinstance(event.source, SourceGroup) or isinstance(event.source, SourceRoom):
