@@ -174,8 +174,9 @@ def handle_text_message(event):
                     event.reply_token, TextSendMessage(text="Mana ada jurus begitu.. untuk melihat list jurus ketik '#ougi'"))
         # mock
         elif cmd.group(1) == 'mock':
+            txt = cmd.group(2)
             new = ''
-            for i in text:
+            for i in txt:
                 if random() > 0.5:
                     new = new + i.upper()
                 else:
