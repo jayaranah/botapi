@@ -45,6 +45,9 @@ img_url_tag = { 'bye':['https://image.ibb.co/ibvkKa/akatsukileave.jpg','https://
             'sultan':['https://image.ibb.co/iDPrSv/sultan.jpg','https://image.ibb.co/mL7ZfF/sultan_prev.jpg'],
             'tercyduk':['https://image.ibb.co/isZrSv/tercyduk.jpg','https://image.ibb.co/jfPEfF/tercyduk_prev.jpg'],
             'thumb up':['https://image.ibb.co/n3Qn0F/thumbup.jpg','https://image.ibb.co/dhSNZa/thumbup_prev.jpg'],
+            'tydac mendydyc':['https://image.ibb.co/e7AJqF/tydacmendydyc_prev.jpg','https://image.ibb.co/mqxyqF/tydacmendydyc.jpg'],
+            'mock':['https://image.ibb.co/ni29xv/mock.jpg','https://image.ibb.co/kuENHv/mock_prev.jpg'],
+            'heuheu':['https://image.ibb.co/nJHRcv/heuheu.jpg','https://image.ibb.co/j6EHja/heuheu_prev.jpg'],
             #'':['',''],
            }
 f = open('statics/gombal.txt', 'r')
@@ -72,5 +75,17 @@ altia_url_tag ={'perhaps':['https://image.ibb.co/jB2YqF/perhaps.jpg','https://im
                 'star wars':['https://image.ibb.co/fHSaLF/starwars.jpg','https://image.ibb.co/ePC9fF/starwars_prev.jpg'],
                 'tercengang':['https://image.ibb.co/nAF6Sv/tercengang.jpg','https://image.ibb.co/k5F6Sv/tercengang_prev.jpg'],
                 'tersyakiti':['https://image.ibb.co/jbpN0F/tersyakiti.jpg','https://image.ibb.co/gJhLnv/tersyakiti_prev.jpg'],
+                'altia':['https://image.ibb.co/hnGKxv/altia.jpg','https://image.ibb.co/d2tA4a/altia_prev.jpg'],
+                'berak kuy':['https://image.ibb.co/m3SgAF/berak_kuy.jpg','https://image.ibb.co/j1kZVF/berakkuy_prev.jpg'],
+                'berak kuy v2':['https://image.ibb.co/hOmxja/berakkuyv2.jpg','https://image.ibb.co/eJM8qF/berakkuyv2_prev.jpg'],
+                'minang bae':['https://image.ibb.co/nBe6cv/minangbae.jpg','https://image.ibb.co/kB8oqF/minangbae_prev.jpg'],
+                'miwon':['https://image.ibb.co/nfssHv/miwon.jpg','https://image.ibb.co/jqCnja/miwon_prev.jpg'],
+                'mwhehe':['https://image.ibb.co/g4J4VF/mwhehe.jpg','https://image.ibb.co/bSJhHv/mwhehe_prev.jpg'],
+                'sini tak cium':['https://image.ibb.co/nA2WAF/sinitakcium.jpg','https://image.ibb.co/k52WAF/sinitakcium_prev.jpg'],
+                'sultan payet':['https://image.ibb.co/jqGPVF/sultanpayet.jpg','https://image.ibb.co/jsp04a/sultanpayet_prev.jpg'],
+                'swag':['https://image.ibb.co/dUH9xv/swag.jpg','https://image.ibb.co/nq3Sja/swag_prev.jpg'],
+                'tarjan':['https://image.ibb.co/bKt4VF/tarjan.jpg','https://image.ibb.co/k6tSja/tarjan_prev.jpg'],
+                'tercydukv2':['https://image.ibb.co/eABrAF/tercydukv2.jpg','https://image.ibb.co/nBy4VF/tercydukv2_prev.jpg'],
+                'tertangkap basah':['https://image.ibb.co/neFJqF/tertangkap_basah_prev.jpg','https://image.ibb.co/nLEdqF/tertangkapbasah.jpg'],
                  #'':['',''],
                  }

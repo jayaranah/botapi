@@ -185,12 +185,11 @@ def handle_text_message(event):
                     event.reply_token, TextSendMessage(text=new))
         # tag
         elif cmd.group(1) == 'tag':
+            pake_ini = img_url_tag
             if isinstance(event.source, SourceGroup):
                 if event.source.group_id == altia_id:
                     pake_ini = img_url_tag_gab
-                else:
-                    pake_ini = img_url_tag
-            if cmd.group(2) in img_url_tag:
+            if cmd.group(2) in pake_ini:
                 image_message = ImageSendMessage(
                     original_content_url=pake_ini[cmd.group(2)][0],
                     preview_image_url=pake_ini[cmd.group(2)][1])
@@ -200,11 +199,10 @@ def handle_text_message(event):
                     event.reply_token, TextSendMessage(text="Untuk melihat list tag ketik '#taglist'"))
         # taglist
         elif cmd.group() == '#taglist':
+            pake_ini = img_url_tag
             if isinstance(event.source, SourceGroup):
                 if event.source.group_id == altia_id:
                     pake_ini = img_url_tag_gab
-                else:
-                    pake_ini = img_url_tag
             srt = sorted(pake_ini)
             txt = 'Berikut list tag : '+', '.join(srt)
             line_bot_api.reply_message(
@@ -247,11 +245,10 @@ def handle_text_message(event):
     # shortcut tag
     elif (text[0] == '/') and (text[len(text)-1] == '/'):
         judul_tag = search(r'\/(.*)',text).group(1)[:-1]
+        pake_ini = img_url_tag
         if isinstance(event.source, SourceGroup):
             if event.source.group_id == altia_id:
                 pake_ini = img_url_tag_gab
-            else:
-                pake_ini = img_url_tag
         if judul_tag in pake_ini:
             image_message = ImageSendMessage(
                     original_content_url=pake_ini[judul_tag][0],
