@@ -20,6 +20,7 @@ import sys
 import tempfile
 from var import *
 from re import search
+from random import random
 from random import choice
 from argparse import ArgumentParser
 
