@@ -104,7 +104,7 @@ def handle_text_message(event):
                 line_bot_api.reply_message(event.reply_token, TextMessage(text='Kenapa Master?'))
         # bolehkah
         elif cmd.group(1) == 'bolehkah':
-            txt = cmd.group(1) + ' ' + text +'\n\n'+ choice(jawaban_bolehkah)
+            txt = 'bolehkah ' + cmd.group(2) +'\n\n'+ choice(jawaban_bolehkah)
             line_bot_api.reply_message(event.reply_token, TextMessage(text=txt))
         # bye
         elif cmd.group() == '#bye':
