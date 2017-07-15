@@ -89,7 +89,7 @@ altia_url_tag ={'perhaps':['https://image.ibb.co/jB2YqF/perhaps.jpg','https://im
                 'tertangkap basah':['https://image.ibb.co/neFJqF/tertangkap_basah_prev.jpg','https://image.ibb.co/nLEdqF/tertangkapbasah.jpg'],
                  #'':['',''],
                  }
-jawaban_bolehkah = ['boleh', 'ngga boleh', 'mana ketehek', 'apaan sih nanya-nanya acchan', 'G tau', 'boleh ngettzz', 'boleh banget qaqa', 'pikir ndiri', 'no komen']
+jawaban_bolehkah = ['boleh', 'ngga boleh', 'Ga tau', 'boleh ngettzz', 'boleh banget qaqa', 'G']
 search_option = {'-g':'https://www.google.co.id/search?q=',
                 '-s':'https://stackoverflow.com/search?q=',
                 '-d':'https://duckduckgo.com/?q=',
