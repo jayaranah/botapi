@@ -13,7 +13,7 @@
 #  under the License.
 
 from __future__ import unicode_literals
-from flask.ext.sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 
 import errno
 import os
