@@ -1,0 +1,5 @@
+Penggunaan : #search <query> atau #search <option> <query>
+Search instan ke berbagai mesin pencari web
+<option> : [-g = Google, -s = Stack Overflow, -d = duckduckGo]
+Contoh : #search Lagu Indonesia Raya 
+#search -s How to read JSON file using python		

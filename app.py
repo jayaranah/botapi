@@ -208,6 +208,23 @@ def handle_text_message(event):
             txt = 'Berikut list tag : '+', '.join(srt)
             line_bot_api.reply_message(
                     event.reply_token, TextSendMessage(text=txt))
+        # ex: #search -g indonesia's anthem song
+        # search
+        elif cmd.group(1) == 'search':
+            if (cmd.group(2))[0] == '-':
+                parsed = search(r'(\-\w)\s+(.*)', cmd.group(2))
+                s_option = parsed.group(1)
+                query = parsed.group(2)
+            else:
+                s_option = '-g'
+                query = cmd.group(2)
+            if s_option in search_option:
+                txt = search_option[s_option] + query.replace(' ','+')
+                line_bot_api.reply_message(
+                    event.reply_token, TextSendMessage(text=txt))
+            else:
+                line_bot_api.reply_message(
+                    event.reply_token, TextSendMessage(text="Butuh bantuan? ketik '#help search'"))
         # so
         elif cmd.group(1) == 'so':
             txt = ' '.join((cmd.group(2).replace(" ","")).upper())
