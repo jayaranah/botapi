@@ -72,8 +72,7 @@ class User(db.Model):
         self.email = email
     def __repr__(self):
         return '<Name %r>' % self.name
-with app.app_context():
-    db.create_all()
+db.create_all()
 
 user = User('John Doe', 'john.doe@example.com')
 db.session.add(user)
