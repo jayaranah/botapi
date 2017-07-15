@@ -15,7 +15,7 @@
 from __future__ import unicode_literals
 SQLALCHEMY_TRACK_MODIFICATIONS = False  # coba db
 from flask_sqlalchemy import SQLAlchemy     # coba db
-from db_construct import User # coba db
+# from db_construct import User # coba db
 
 import errno
 import os
