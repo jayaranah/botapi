@@ -13,6 +13,7 @@
 #  under the License.
 
 from __future__ import unicode_literals
+from flask.ext.sqlalchemy import SQLAlchemy
 
 import errno
 import os
@@ -45,6 +46,8 @@ from linebot.models import (
 )
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+db = SQLAlchemy(app)
 
 channel_access_token = str(os.environ.get('CHANNEL_ACCESS_TOKEN'))
 channel_secret = str(os.environ.get('CHANNEL_SECRET'))
