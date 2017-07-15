@@ -75,7 +75,7 @@ class User(db.Model):
     def __repr__(self):
         return '<Name %r>' % self.name
     
-all_users = User.query.filter_by(name='John Doe').first()
+all_users = User.query.filter_by(name='John Do').first()
 
 """
 # function for create tmp dir for download content
