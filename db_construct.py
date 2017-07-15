@@ -1,6 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
-
-
+import app
     
 """
 db.create_all()
