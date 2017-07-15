@@ -13,7 +13,9 @@
 #  under the License.
 
 from __future__ import unicode_literals
+SQLALCHEMY_TRACK_MODIFICATIONS = False  # coba db
 from flask_sqlalchemy import SQLAlchemy     # coba db
+from db_construct import User # coba db
 
 import errno
 import os
@@ -47,7 +49,7 @@ from linebot.models import (
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')  # coba db
-SQLALCHEMY_TRACK_MODIFICATIONS = False  # coba db
+
 db = SQLAlchemy(app)    # coba db
 
 channel_access_token = str(os.environ.get('CHANNEL_ACCESS_TOKEN'))
@@ -63,22 +65,6 @@ img_url_tag_gab.update(altia_url_tag)
 #static_tmp_path = os.path.join(os.path.dirname(__file__), 'static', 'tmp')#
 
 # coba db
-"""
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80))
-    email = db.Column(db.String(120), unique=True)
-    def __init__(self, name, email):
-        self.name = name
-        self.email = email
-    def __repr__(self):
-        return '<Name %r>' % self.name
-
-db.create_all()
-user = User('John Doe', 'john.doe@example.com')
-db.session.add(user)
-db.session.commit()
-"""
 all_users = User.query.all()
 
 """
