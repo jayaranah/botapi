@@ -1,4 +1,4 @@
 line-bot-sdk
 flask==0.12.2
 psycopg2==2.7.1
-flask_sqlalchemy
+Flask-SQLAlchemy

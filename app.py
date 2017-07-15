@@ -47,6 +47,7 @@ from linebot.models import (
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+SQLALCHEMY_TRACK_MODIFICATIONS = False
 db = SQLAlchemy(app)
 
 channel_access_token = str(os.environ.get('CHANNEL_ACCESS_TOKEN'))
