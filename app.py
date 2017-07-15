@@ -13,7 +13,7 @@
 #  under the License.
 
 from __future__ import unicode_literals
-from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy     # coba db
 
 import errno
 import os
@@ -46,9 +46,9 @@ from linebot.models import (
 )
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
-SQLALCHEMY_TRACK_MODIFICATIONS = False
-db = SQLAlchemy(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')  # coba db
+SQLALCHEMY_TRACK_MODIFICATIONS = False  # coba db
+db = SQLAlchemy(app)    # coba db
 
 channel_access_token = str(os.environ.get('CHANNEL_ACCESS_TOKEN'))
 channel_secret = str(os.environ.get('CHANNEL_SECRET'))
@@ -61,6 +61,23 @@ img_url_tag_gab = img_url_tag.copy()
 img_url_tag_gab.update(altia_url_tag)
 
 #static_tmp_path = os.path.join(os.path.dirname(__file__), 'static', 'tmp')#
+
+# coba db
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80))
+    email = db.Column(db.String(120), unique=True)
+    def __init__(self, name, email):
+        self.name = name
+        self.email = email
+    def __repr__(self):
+        return '<Name %r>' % self.name
+
+user = User('John Doe', 'john.doe@example.com')
+db.session.add(user)
+db.session.commit()
+
+all_users = User.query.all()
 
 """
 # function for create tmp dir for download content
@@ -104,6 +121,8 @@ def handle_text_message(event):
                 line_bot_api.reply_message(event.reply_token, TextMessage(text='Ya Master?'))
             elif cmd.group(2) == 'thanks':
                 line_bot_api.reply_message(event.reply_token, TextMessage(text='Anytime Master'))
+            elif cmd.group(2) == 'db':
+                line_bot_api.reply_message(event.reply_token, TextMessage(text=repr(all_users)))
             else:
                 line_bot_api.reply_message(event.reply_token, TextMessage(text='Kenapa Master?'))
         # bolehkah
