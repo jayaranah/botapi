@@ -48,6 +48,7 @@ img_url_tag = { 'bye':['https://image.ibb.co/ibvkKa/akatsukileave.jpg','https://
             'tydac mendydyc':['https://image.ibb.co/e7AJqF/tydacmendydyc_prev.jpg','https://image.ibb.co/mqxyqF/tydacmendydyc.jpg'],
             'mock':['https://image.ibb.co/ni29xv/mock.jpg','https://image.ibb.co/kuENHv/mock_prev.jpg'],
             'heuheu':['https://image.ibb.co/nJHRcv/heuheu.jpg','https://image.ibb.co/j6EHja/heuheu_prev.jpg'],
+            'cogan':['https://image.ibb.co/dbawvF/cogan.jpg','https://image.ibb.co/dKxn2v/cogan_prev.jpg'],
             #'':['',''],
            }
 f = open('statics/gombal.txt', 'r')

@@ -75,7 +75,7 @@ class User(db.Model):
     def __repr__(self):
         return '<Name %r>' % self.name
     
-all_users = User.query.filter_by(name='John Do').first()
+all_users = User.query.filter_by(name='John Doe').first()
 
 """
 # function for create tmp dir for download content
@@ -309,9 +309,10 @@ def handle_text_message(event):
 def handle_join(event):
     if event.source.type == 'group':
         line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text='Watashinonamaeha akatsukidesu ;-;')
-            )
+            event.reply_token,[
+            TextSendMessage(text='Watashinonamaeha akatsukidesu ;-;'),
+            TextSendMessage(text='Salam kenal semua!!')
+            ])
 
 
 @handler.add(LeaveEvent)
