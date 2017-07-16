@@ -1,6 +1,6 @@
 Penggunaan : #tag <judul tag>
 Post tag image berjudul <judul tag>.
-Gunakan perintah '#tags' untuk melihat daftar tag yang tersedia.
+Gunakan perintah '#taglist' untuk melihat daftar tag yang tersedia.
 
 Tersedia juga shortcut dengan cara '/<judul tag>/'
 Contoh : #tag gagal ambis, /gagal ambis/
