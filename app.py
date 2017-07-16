@@ -75,7 +75,7 @@ class User(db.Model):
     def __repr__(self):
         return '<Name %r>' % self.name
     
-all_users = User.query.filter_by(name='John Doe').first()
+
 
 """
 # function for create tmp dir for download content
@@ -119,13 +119,15 @@ def handle_text_message(event):
                 line_bot_api.reply_message(event.reply_token, TextMessage(text='Ya Master?'))
             elif cmd.group(2) == 'thanks':
                 line_bot_api.reply_message(event.reply_token, TextMessage(text='Anytime Master'))
-            elif cmd.group(2) == 'db':
-                line_bot_api.reply_message(event.reply_token,
-                                           [TextMessage(text=repr(all_users)),
-                                            TextMessage(text=all_users.email),
-                                            ])
             else:
                 line_bot_api.reply_message(event.reply_token, TextMessage(text='Kenapa Master?'))
+        # coba isi db
+        elif cmd.group(1) == 'db':
+            all_users = User.query.filter_by(name=cmd.group(2)).first()
+            line_bot_api.reply_message(event.reply_token,
+                                       [TextMessage(text=repr(all_users)),
+                                        TextMessage(text=all_users.email),
+                                            ])
         # bolehkah
         elif cmd.group(1) == 'bolehkah':
             txt = 'bolehkah ' + cmd.group(2) +'\n\n'+ choice(jawaban_bolehkah)
