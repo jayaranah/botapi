@@ -64,19 +64,6 @@ img_url_tag_gab.update(altia_url_tag)
 
 #static_tmp_path = os.path.join(os.path.dirname(__file__), 'static', 'tmp')#
 
-# coba db
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80))
-    email = db.Column(db.String(120), unique=True)
-    def __init__(self, name, email):
-        self.name = name
-        self.email = email
-    def __repr__(self):
-        return '<Name %r>' % self.name
-    
-
-
 """
 # function for create tmp dir for download content
 def make_static_tmp_dir():
@@ -123,10 +110,10 @@ def handle_text_message(event):
                 line_bot_api.reply_message(event.reply_token, TextMessage(text='Kenapa Master?'))
         # coba isi db
         elif cmd.group(1) == 'db':
-            all_users = User.query.filter_by(name=cmd.group(2)).first()
+            first_jurus = Daftar_Jurus.query.filter_by(nama=cmd.group(2)).first()
             line_bot_api.reply_message(event.reply_token,
-                                       [TextMessage(text=repr(all_users)),
-                                        TextMessage(text=all_users.email),
+                                       [TextMessage(text=first_jurus.nama),
+                                        TextMessage(text=first_jurus.file_txt),
                                             ])
         # bolehkah
         elif cmd.group(1) == 'bolehkah':
@@ -336,6 +323,36 @@ def handle_beacon(event):
         TextSendMessage(
             text='Got beacon event. hwid={}, device_message(hex string)={}'.format(
                 event.beacon.hwid, event.beacon.dm)))
+
+# ---------------------------------Database--------------------------------- #
+# coba db
+
+class Daftar_Tag(db.Model):
+    judul = db.Column(db.String(80), unique=True)
+    url = db.Column(db.String)
+    url_prev = db.Column(db.String)
+    altia_bol = db.Column(db.Boolean)
+    def __init__(self, judul, url, url_prev, altia_bol):
+        self.n = judul
+        self.url = url
+        self.url_prev = url_prev
+        self.altia_bol = altia_bol
+
+class Daftar_Jurus(db.Model):
+    nama = db.Column(db.String(80), unique=True)
+    file_txt = db.Column(db.Text)
+    def __init__(self, nama, file_txt):
+        self.nama = nama
+        self.file_txt = file_txt
+
+class Helper(db.Model):
+    cmd = db.Column(db.String(80), unique=True)
+    file_txt = db.Column(db.Text)
+    def __init__(self, cmd, file_txt):
+        self.cmd = cmd
+        self.file_txt = file_txt
+    
+# -------------------------------------------------------------------------- #
 
 
 
