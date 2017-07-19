@@ -329,6 +329,7 @@ def handle_beacon(event):
 
 class Daftar_Tag(db.Model):
     __tablename__ = 'Daftar_Tag'
+    id = db.Column(db.Integer, primary_key=True)
     judul = db.Column(db.String(80), unique=True)
     url = db.Column(db.String(120))
     url_prev = db.Column(db.String(120))
@@ -341,6 +342,7 @@ class Daftar_Tag(db.Model):
 
 class Daftar_Jurus(db.Model):
     __tablename__ = 'Daftar_Jurus'
+    id = db.Column(db.Integer, primary_key=True)
     nama = db.Column(db.String(80), unique=True)
     file_txt = db.Column(db.Text)
     def __init__(self, nama, file_txt):
@@ -349,6 +351,7 @@ class Daftar_Jurus(db.Model):
 
 class Helper(db.Model):
     __tablename__ = 'Helper'
+    id = db.Column(db.Integer, primary_key=True)
     cmd = db.Column(db.String(80), unique=True)
     file_txt = db.Column(db.Text)
     def __init__(self, cmd, file_txt):
