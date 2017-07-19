@@ -329,11 +329,11 @@ def handle_beacon(event):
 
 class Daftar_Tag(db.Model):
     judul = db.Column(db.String(80), unique=True)
-    url = db.Column(db.String)
-    url_prev = db.Column(db.String)
+    url = db.Column(db.String(120))
+    url_prev = db.Column(db.String(120))
     altia_bol = db.Column(db.Boolean)
     def __init__(self, judul, url, url_prev, altia_bol):
-        self.n = judul
+        self.judul = judul
         self.url = url
         self.url_prev = url_prev
         self.altia_bol = altia_bol
