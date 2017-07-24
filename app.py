@@ -114,12 +114,15 @@ def handle_text_message(event):
             line_bot_api.reply_message(event.reply_token,
                                        [TextMessage(text=tg.id),
                                         TextMessage(text=tg.judul),
+                                        TextMessage(text=tg.url),
+                                        TextMessage(text=tg.url_prev),
                                             ])
+            """
             image_message = ImageSendMessage(
                     original_content_url=tg.url,
                     preview_image_url=tg.url_prev)
             line_bot_api.reply_message(event.reply_token, image_message)
-            
+            """
         # bolehkah
         elif cmd.group(1) == 'bolehkah':
             txt = 'bolehkah ' + cmd.group(2) +'\n\n'+ choice(jawaban_bolehkah)
