@@ -36,3 +36,4 @@ if __name__ == '__main__':
     table_name = sys.argv[1]
     path_txt = sys.argv[2]
     construct(table_name, path_txt)
+    print('Success')
