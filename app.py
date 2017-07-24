@@ -111,18 +111,15 @@ def handle_text_message(event):
         # coba isi db
         elif cmd.group(1) == 'db':
             tg = Daftar_Tag.query.filter_by(judul=cmd.group(2)).first()
-            line_bot_api.reply_message(event.reply_token,
-                                       [TextMessage(text=tg.id),
-                                        TextMessage(text=tg.judul),
-                                        TextMessage(text=tg.url),
-                                        TextMessage(text=tg.url_prev),
-                                            ])
-            """
             image_message = ImageSendMessage(
                     original_content_url=tg.url,
                     preview_image_url=tg.url_prev)
-            line_bot_api.reply_message(event.reply_token, image_message)
-            """
+            line_bot_api.reply_message(event.reply_token,
+                                       [TextMessage(text=tg.id),
+                                        TextMessage(text=tg.judul),
+                                        image_message,
+                                            ])
+            
         # bolehkah
         elif cmd.group(1) == 'bolehkah':
             txt = 'bolehkah ' + cmd.group(2) +'\n\n'+ choice(jawaban_bolehkah)
