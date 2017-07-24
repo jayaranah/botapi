@@ -115,7 +115,7 @@ def handle_text_message(event):
                     original_content_url=tg.url,
                     preview_image_url=tg.url_prev)
             line_bot_api.reply_message(event.reply_token,
-                                       [TextMessage(text=tg.id)
+                                       [TextMessage(text=tg.id),
                                         TextMessage(text=str(tg.altia_bol)),
                                         TextMessage(text=tg.judul),
                                         image_message,
