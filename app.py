@@ -108,14 +108,15 @@ def handle_text_message(event):
                 line_bot_api.reply_message(event.reply_token, TextMessage(text='Anytime Master'))
             else:
                 line_bot_api.reply_message(event.reply_token, TextMessage(text='Kenapa Master?'))
-        # coba isi db
+        # coba db
         elif cmd.group(1) == 'db':
             tg = Daftar_Tag.query.filter_by(judul=cmd.group(2)).first()
             image_message = ImageSendMessage(
                     original_content_url=tg.url,
                     preview_image_url=tg.url_prev)
             line_bot_api.reply_message(event.reply_token,
-                                       [TextMessage(text=tg.id),
+                                       [TextMessage(text=tg.id)
+                                        TextMessage(text=str(tg.altia_bol)),
                                         TextMessage(text=tg.judul),
                                         image_message,
                                             ])
