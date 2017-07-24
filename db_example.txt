@@ -1,2 +1,0 @@
-naga kacang; statics/nagakacang.txt
-geblek luh; statics/geblek.txt

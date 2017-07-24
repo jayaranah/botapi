@@ -110,11 +110,16 @@ def handle_text_message(event):
                 line_bot_api.reply_message(event.reply_token, TextMessage(text='Kenapa Master?'))
         # coba isi db
         elif cmd.group(1) == 'db':
-            first_jurus = Daftar_Jurus.query.filter_by(nama=cmd.group(2)).first()
+            tg = Daftar_Tag.query.filter_by(judul=cmd.group(2)).first()
             line_bot_api.reply_message(event.reply_token,
-                                       [TextMessage(text=first_jurus.nama),
-                                        TextMessage(text=first_jurus.file_txt),
+                                       [TextMessage(text=tg.id),
+                                        TextMessage(text=tg.judul),
                                             ])
+            image_message = ImageSendMessage(
+                    original_content_url=tg.url,
+                    preview_image_url=tg.url_prev)
+            line_bot_api.reply_message(event.reply_token, image_message)
+            
         # bolehkah
         elif cmd.group(1) == 'bolehkah':
             txt = 'bolehkah ' + cmd.group(2) +'\n\n'+ choice(jawaban_bolehkah)

@@ -1,6 +1,6 @@
 import app
 import sys
-from re import search
+from re import search, findall
     
 """
 db.create_all()
@@ -10,7 +10,7 @@ db.session.commit()
 """
 
 def construct(table_name, path_txt):
-    f = open('db_example.txt', 'r')
+    f = open('db_construct.txt', 'r')
     content = f.read().splitlines()
     f.close()
     for i in content:
@@ -27,7 +27,7 @@ def construct(table_name, path_txt):
             print('There is no ' + table_name + ' table, please re-check your argument')
             sys.exit(1)
         app.db.session.add(cm)
-        app.db.session.commit()    
+        app.db.session.commit()
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
