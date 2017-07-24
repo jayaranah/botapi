@@ -10,7 +10,7 @@ db.session.commit()
 """
 
 def construct(table_name, path_txt):
-    f = open('db_construct.txt', 'r')
+    f = open(path_txt, 'r')
     content = f.read().splitlines()
     f.close()
     for i in content:
