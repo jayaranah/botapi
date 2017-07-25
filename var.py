@@ -15,7 +15,7 @@ img_url_tag = { 'bye':['https://image.ibb.co/ibvkKa/akatsukileave.jpg','https://
             'nani':['https://image.ibb.co/eNbg9a/nani.jpg','https://image.ibb.co/moA8pa/nani_prev.jpg'],
             'NO':['https://image.ibb.co/bSDiNv/NO.jpg','https://image.ibb.co/jgrEUa/NO_prev.jpg'],
             'NOOO':['https://image.ibb.co/dtschv/NOOO.jpg','https://image.ibb.co/dtschv/NOOO.jpg'],
-            'pintar':['https://image.ibb.co/kOnShv/pintar.jpg', 'https://image.ibb.co/iFhGaF/pintar_prev.jpg'],
+            'pintar':['https://image.ibb.co/kOnShv/pintar.jpg','https://image.ibb.co/iFhGaF/pintar_prev.jpg'],
             'rasenggan':['https://image.ibb.co/kSQDNv/rasenggan.jpg','https://image.ibb.co/ciV2FF/rasenggan_prev.jpg'],
             'savage':['https://image.ibb.co/egn4Ua/savage.jpg','https://image.ibb.co/bDPUvF/savage_Copy.jpg'],
             'sepi':['https://image.ibb.co/k8CShv/sepi.jpg','https://image.ibb.co/hp802v/sepi_prev.jpg'],
@@ -49,16 +49,17 @@ img_url_tag = { 'bye':['https://image.ibb.co/ibvkKa/akatsukileave.jpg','https://
             'mock':['https://image.ibb.co/ni29xv/mock.jpg','https://image.ibb.co/kuENHv/mock_prev.jpg'],
             'heuheu':['https://image.ibb.co/nJHRcv/heuheu.jpg','https://image.ibb.co/j6EHja/heuheu_prev.jpg'],
             'cogan':['https://image.ibb.co/dKxn2v/cogan_prev.jpg','https://image.ibb.co/dbawvF/cogan.jpg'],
+            'perhaps':['https://image.ibb.co/jB2YqF/perhaps.jpg','https://image.ibb.co/hSi0LF/perhaps_prev.jpg'],
+            'dude what':['https://image.ibb.co/gtcEEa/dude_what.jpg','https://image.ibb.co/gGrD7v/dude_what_prev.jpg'],
             #'':['',''],
            }
 f = open('statics/gombal.txt', 'r')
 list_gombal = (f.read()).splitlines()
 f.close()
-altia_url_tag ={'perhaps':['https://image.ibb.co/jB2YqF/perhaps.jpg','https://image.ibb.co/hSi0LF/perhaps_prev.jpg'],
+altia_url_tag ={'tertangkap basah':['https://image.ibb.co/neFJqF/tertangkap_basah_prev.jpg','https://image.ibb.co/nLEdqF/tertangkapbasah.jpg'],
                 'bb++':['https://image.ibb.co/gYWwSv/bb.jpg','https://image.ibb.co/cAPuEa/bb_prev.jpg'],
                 'deal with it':['https://image.ibb.co/dqWKfF/dealwithit.jpg','https://image.ibb.co/kg1wSv/dealwithit_prev.jpg'],
                 'diem lu':['https://image.ibb.co/iZtAnv/diemlu.jpg','https://image.ibb.co/gMAC0F/diemlu_prev.jpg'],
-                'dude what':['https://image.ibb.co/gtcEEa/dude_what.jpg','https://image.ibb.co/gGrD7v/dude_what_prev.jpg'],
                 'ehe':['https://image.ibb.co/hnUN0F/ehe.jpg','https://image.ibb.co/bRjpfF/ehe_prev.jpg'],
                 'fokyeah':['https://image.ibb.co/cnL6Sv/fokyeah.jpg','https://image.ibb.co/irmfnv/fokyeah_prev.jpg'],
                 'hoam':['https://image.ibb.co/iGDRSv/hoam.jpg','https://image.ibb.co/bDO4Ea/hoam_prev.jpg'],
@@ -87,7 +88,6 @@ altia_url_tag ={'perhaps':['https://image.ibb.co/jB2YqF/perhaps.jpg','https://im
                 'swag':['https://image.ibb.co/dUH9xv/swag.jpg','https://image.ibb.co/nq3Sja/swag_prev.jpg'],
                 'tarjan':['https://image.ibb.co/bKt4VF/tarjan.jpg','https://image.ibb.co/k6tSja/tarjan_prev.jpg'],
                 'tercydukv2':['https://image.ibb.co/eABrAF/tercydukv2.jpg','https://image.ibb.co/nBy4VF/tercydukv2_prev.jpg'],
-                'tertangkap basah':['https://image.ibb.co/neFJqF/tertangkap_basah_prev.jpg','https://image.ibb.co/nLEdqF/tertangkapbasah.jpg'],
                  #'':['',''],
                  }
 jawaban_bolehkah = ['boleh', 'ngga boleh', 'Ga tau', 'boleh ngettzz', 'boleh banget qaqa', 'G']

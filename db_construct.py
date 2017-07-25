@@ -30,10 +30,10 @@ def construct(table_name, path_txt):
         app.db.session.commit()
 
 if __name__ == '__main__':
-    if len(sys.argv) != 3:
-        print('Usage: python db_construct.py <table_name> <path_txt>')
+    if len(sys.argv) != 2:
+        print('Usage: python db_construct.py <table_name>')
         sys.exit(1)
     table_name = sys.argv[1]
-    path_txt = sys.argv[2]
+    path_txt = 'db_' + table_name
     construct(table_name, path_txt)
     print('Success')
