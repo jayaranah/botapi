@@ -59,6 +59,8 @@ altia_id = str(os.environ.get('ALTIA_ID'))
 line_bot_api = LineBotApi(channel_access_token)
 handler = WebhookHandler(channel_secret)
 
+instagram_api_access_token = '2199835902.e36f4e8.1ac2ba9a17fc4860bc91c66fdd9a0fa1'
+
 img_url_tag_gab = img_url_tag.copy()
 img_url_tag_gab.update(altia_url_tag)
 
@@ -98,8 +100,14 @@ def handle_text_message(event):
     text = event.message.text
     if text[0] == '#':
         cmd = search(r'\#(\w*)\s*(.*)', text)
+        # IG API
+        if (cmd.group(1) == 'ig'):
+            hashtag = cmd.group(2)
+            r = requests.get('https://api.instagram.com/v1/tags/'+hashtag+'?access_token='+instagram_api_access_token)
+            txt = 'hashtag: '+hashtag+ '\n' +'count: '+ r.data.media_count
+            line_bot_api.reply_message(event.reply_token, TextMessage(text=txt))
         # super user command
-        if (cmd.group(1) == 'su') and (event.source.user_id == master_id):
+        elif (cmd.group(1) == 'su') and (event.source.user_id == master_id):
             if cmd.group(2) == 'groupid':
                 line_bot_api.reply_message(event.reply_token, TextMessage(text=event.source.group_id))
             elif cmd.group(2) == 'acchan':
