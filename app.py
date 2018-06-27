@@ -104,16 +104,19 @@ def handle_text_message(event):
         # IG API
         if (cmd.group(1) == 'ig'):
             hashtag = cmd.group(2)
-            line_bot_api.reply_message(event.reply_token, TextMessage(text="blom jadi"))
+            
             r = requests.get('https://api.instagram.com/v1/tags/'+hashtag+'?access_token='+instagram_api_access_token)
-            rjson = r.json()
+            if !r:
+                line_bot_api.reply_message(event.reply_token, TextMessage(text="blom jadi"))
+            else:
+                rjson = r.json()
            
 
 
-            txt = 'hashtag: '+hashtag+ '\n' +'count: '+ rjson.data.media_count
-            line_bot_api.reply_message(event.reply_token, TextMessage(text=txt))
+                txt = 'hashtag: '+hashtag+ '\n' +'count: '+ rjson.data.media_count
+                line_bot_api.reply_message(event.reply_token, TextMessage(text=txt))
         # super user command
-        elif (cmd.group(1) == 'sud') and (event.source.user_id == master_id):
+        elif (cmd.group(1) == 'su') and (event.source.user_id == master_id):
             if cmd.group(2) == 'groupid':
                 line_bot_api.reply_message(event.reply_token, TextMessage(text=event.source.group_id))
             elif cmd.group(2) == 'acchan':
