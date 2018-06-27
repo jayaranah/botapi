@@ -113,7 +113,7 @@ def handle_text_message(event):
             txt = 'hashtag: '+hashtag+ '\n' +'count: '+ rjson.data.media_count
             line_bot_api.reply_message(event.reply_token, TextMessage(text=txt))
         # super user command
-        elif (cmd.group(1) == 'su') and (event.source.user_id == master_id):
+        elif (cmd.group(1) == 'sud') and (event.source.user_id == master_id):
             if cmd.group(2) == 'groupid':
                 line_bot_api.reply_message(event.reply_token, TextMessage(text=event.source.group_id))
             elif cmd.group(2) == 'acchan':
