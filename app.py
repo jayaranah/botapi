@@ -21,6 +21,7 @@ import errno
 import os
 import sys
 import tempfile
+import requests 
 from var import *
 from re import search
 from random import random
