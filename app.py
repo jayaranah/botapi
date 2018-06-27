@@ -104,15 +104,11 @@ def handle_text_message(event):
         # IG API
         if (cmd.group(1) == 'ig'):
             hashtag = cmd.group(2)
-            
             r = requests.get('https://api.instagram.com/v1/tags/'+hashtag+'?access_token='+instagram_api_access_token)
-            if !r:
+            if not r:
                 line_bot_api.reply_message(event.reply_token, TextMessage(text="blom jadi"))
             else:
                 rjson = r.json()
-           
-
-
                 txt = 'hashtag: '+hashtag+ '\n' +'count: '+ rjson.data.media_count
                 line_bot_api.reply_message(event.reply_token, TextMessage(text=txt))
         # super user command
