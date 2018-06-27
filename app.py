@@ -105,10 +105,12 @@ def handle_text_message(event):
         if (cmd.group(1) == 'ig'):
             hashtag = cmd.group(2)
             r = requests.get('https://api.instagram.com/v1/tags/'+hashtag+'?access_token='+instagram_api_access_token)
-            line_bot_api.reply_message(event.reply_token, TextMessage(text=r.text))
             rjson = r.json()
+           
+
+
             txt = 'hashtag: '+hashtag+ '\n' +'count: '+ rjson.data.media_count
-            line_bot_api.reply_message(event.reply_token, TextMessage(text="txt"))
+            line_bot_api.reply_message(event.reply_token, TextMessage(text=txt))
         # super user command
         elif (cmd.group(1) == 'su') and (event.source.user_id == master_id):
             if cmd.group(2) == 'groupid':
