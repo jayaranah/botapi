@@ -53,10 +53,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')  # coba d
 
 db = SQLAlchemy(app)    # coba db
 
-channel_access_token = str(os.environ.get('CHANNEL_ACCESS_TOKEN'))
-channel_secret = str(os.environ.get('CHANNEL_SECRET'))
-master_id = str(os.environ.get('MASTER_ID'))
-altia_id = str(os.environ.get('ALTIA_ID'))
+channel_access_token = str(os.environ.get('s4DEdk/D8/f1eneeeVh0GfAZI5EuFP6GuC5RCU54ggL7YdcqcesDNPnyEi/8kLDfZpmVOkIuv6GLJb1p18MPweC09LHYRg3HH+O/QmpltdYOv9sPIbf8P/OyLBdEOBghd5q1y2jDczoow/8+XGR2ZQdB04t89/1O/w1cDnyilFU='))
+channel_secret = str(os.environ.get('ca723838c15479929c81c7e30dd99b7f'))
+master_id = str(os.environ.get('U2c7d1341178eed8c93c23e914cbcb6a0'))
+altia_id = str(os.environ.get('U2c7d1341178eed8c93c23e914cbcb6a0'))
 line_bot_api = LineBotApi(channel_access_token)
 handler = WebhookHandler(channel_secret)
 
