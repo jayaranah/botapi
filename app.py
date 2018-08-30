@@ -57,8 +57,8 @@ channel_access_token = str(os.environ.get('s4DEdk/D8/f1eneeeVh0GfAZI5EuFP6GuC5RC
 channel_secret = str(os.environ.get('ca723838c15479929c81c7e30dd99b7f'))
 master_id = str(os.environ.get('U2c7d1341178eed8c93c23e914cbcb6a0'))
 altia_id = str(os.environ.get('U2c7d1341178eed8c93c23e914cbcb6a0'))
-line_bot_api = LineBotApi(channel_access_token)
-handler = WebhookHandler(channel_secret)
+line_bot_api = LineBotApi('s4DEdk/D8/f1eneeeVh0GfAZI5EuFP6GuC5RCU54ggL7YdcqcesDNPnyEi/8kLDfZpmVOkIuv6GLJb1p18MPweC09LHYRg3HH+O/QmpltdYOv9sPIbf8P/OyLBdEOBghd5q1y2jDczoow/8+XGR2ZQdB04t89/1O/w1cDnyilFU=')
+handler = WebhookHandler('ca723838c15479929c81c7e30dd99b7f')
 
 instagram_api_access_token = '2199835902.e36f4e8.1ac2ba9a17fc4860bc91c66fdd9a0fa1'
 
